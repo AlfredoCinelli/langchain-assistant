@@ -1,0 +1,1167 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-9B66JQQH2F"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9B66JQQH2F');
+    </script>
+<title>RedisConfig — 🦜🔗 LangChain  documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/autodoc_pydantic.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=488f4e83" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=3b5cce75"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'redis/config/langchain_redis.config.RedisConfig';</script>
+<link href="../../_static/favicon.png" rel="icon"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="langchain_redis.config.generate_ulid.html" rel="next" title="generate_ulid"/>
+<link href="../config.html" rel="prev" title="config"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+<meta content="Jan 29, 2025" name="docbuild:last-update"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-light" src="../../_static/wordmark-api.svg"/>
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-dark pst-js-only" src="../../_static/wordmark-api-dark.svg"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Base packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../langchain/index.html">Langchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../text_splitters/index.html">Text Splitters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental/index.html">Experimental</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ai21/index.html">AI21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../anthropic/index.html">Anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../astradb/index.html">AstraDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/index.html">AWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure_dynamic_sessions/index.html">Azure Dynamic Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cerebras/index.html">Cerebras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chroma/index.html">Chroma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cohere/index.html">Cohere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../databricks/index.html">Databricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deepseek/index.html">Deepseek</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elasticsearch/index.html">Elasticsearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exa/index.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fireworks/index.html">Fireworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../google_community/index.html">Google Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../google_genai/index.html">Google GenAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../google_vertexai/index.html">Google VertexAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../groq/index.html">Groq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../huggingface/index.html">Huggingface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ibm/index.html">IBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../milvus/index.html">Milvus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mistralai/index.html">MistralAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neo4j/index.html">Neo4J</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nomic/index.html">Nomic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nvidia_ai_endpoints/index.html">Nvidia Ai Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ollama/index.html">Ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openai/index.html">OpenAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pinecone/index.html">Pinecone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../postgres/index.html">Postgres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../prompty/index.html">Prompty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qdrant/index.html">Qdrant</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Redis</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cache.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cache</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chat_message_history.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">chat_message_history</span></code></a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../config.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">config</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">RedisConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="langchain_redis.config.generate_ulid.html">generate_ulid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectorstores.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vectorstores</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sema4/index.html">Sema4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snowflake/index.html">Snowflake</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sqlserver/index.html">Sqlserver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../standard_tests/index.html">Standard Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../together/index.html">Together</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unstructured/index.html">Unstructured</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upstage/index.html">Upstage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../voyageai/index.html">VoyageAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weaviate/index.html">Weaviate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xai/index.html">XAI</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../../reference.html">LangChain Python API Reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">langchain-redis: 0.1.2</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../config.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">RedisConfig</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="redisconfig">
+<h1>RedisConfig<a class="headerlink" href="#redisconfig" title="Link to this heading">#</a></h1>
+<dl class="py class pydantic_model">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">langchain_redis.config.</span></span><span class="sig-name descname"><span class="pre">RedisConfig</span></span><a class="reference internal" href="../../_modules/langchain_redis/config.html#RedisConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_redis.config.RedisConfig" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Configuration class for Redis vector store settings.</p>
+<p>This class defines the configuration parameters for setting up and interacting with
+a Redis vector store. It uses Pydantic for data validation and settings management.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.index_name">
+<span class="sig-name descname"><span class="pre">index_name</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.index_name" title="Link to this definition">#</a></dt>
+<dd><p>Name of the index in Redis. Defaults to a generated ULID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.from_existing">
+<span class="sig-name descname"><span class="pre">from_existing</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.from_existing" title="Link to this definition">#</a></dt>
+<dd><p>Whether to use an existing index. Defaults to False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.key_prefix">
+<span class="sig-name descname"><span class="pre">key_prefix</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.key_prefix" title="Link to this definition">#</a></dt>
+<dd><p>Prefix for Redis keys. Defaults to index_name
+if not set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.redis_url">
+<span class="sig-name descname"><span class="pre">redis_url</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.redis_url" title="Link to this definition">#</a></dt>
+<dd><p>URL of the Redis instance. Defaults to “redis://localhost:6379”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.redis_client">
+<span class="sig-name descname"><span class="pre">redis_client</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.redis_client" title="Link to this definition">#</a></dt>
+<dd><p>Pre-existing Redis client instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="../../community/vectorstores/langchain_community.vectorstores.redis.base.Redis.html#langchain_community.vectorstores.redis.base.Redis" title="langchain_community.vectorstores.redis.base.Redis">Redis</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.connection_args">
+<span class="sig-name descname"><span class="pre">connection_args</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.connection_args" title="Link to this definition">#</a></dt>
+<dd><p>Additional Redis
+connection arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[Dict[str, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.distance_metric">
+<span class="sig-name descname"><span class="pre">distance_metric</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.distance_metric" title="Link to this definition">#</a></dt>
+<dd><p>Distance metric for vector similarity.
+Defaults to “COSINE”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.indexing_algorithm">
+<span class="sig-name descname"><span class="pre">indexing_algorithm</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.indexing_algorithm" title="Link to this definition">#</a></dt>
+<dd><p>Algorithm used for indexing. Defaults to “FLAT”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.vector_datatype">
+<span class="sig-name descname"><span class="pre">vector_datatype</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.vector_datatype" title="Link to this definition">#</a></dt>
+<dd><p>Data type of the vector. Defaults to “FLOAT32”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.storage_type">
+<span class="sig-name descname"><span class="pre">storage_type</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.storage_type" title="Link to this definition">#</a></dt>
+<dd><p>Storage type in Redis. Defaults to “hash”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.id_field">
+<span class="sig-name descname"><span class="pre">id_field</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.id_field" title="Link to this definition">#</a></dt>
+<dd><p>Field name for document ID. Defaults to “id”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.content_field">
+<span class="sig-name descname"><span class="pre">content_field</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.content_field" title="Link to this definition">#</a></dt>
+<dd><p>Field name for document content. Defaults to “text”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.embedding_field">
+<span class="sig-name descname"><span class="pre">embedding_field</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.embedding_field" title="Link to this definition">#</a></dt>
+<dd><p>Field name for embedding vector. Defaults to “embedding”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.default_tag_separator">
+<span class="sig-name descname"><span class="pre">default_tag_separator</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.default_tag_separator" title="Link to this definition">#</a></dt>
+<dd><p>Separator for tag fields. Defaults to “|”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.metadata_schema">
+<span class="sig-name descname"><span class="pre">metadata_schema</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.metadata_schema" title="Link to this definition">#</a></dt>
+<dd><p>Schema for metadata fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[List[Dict[str, Any]]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.index_schema">
+<span class="sig-name descname"><span class="pre">index_schema</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.index_schema" title="Link to this definition">#</a></dt>
+<dd><p>Full index schema definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[IndexSchema]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.schema_path">
+<span class="sig-name descname"><span class="pre">schema_path</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.schema_path" title="Link to this definition">#</a></dt>
+<dd><p>Path to a YAML file containing the index schema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.return_keys">
+<span class="sig-name descname"><span class="pre">return_keys</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.return_keys" title="Link to this definition">#</a></dt>
+<dd><p>Whether to return keys after adding documents.
+Defaults to False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.custom_keys">
+<span class="sig-name descname"><span class="pre">custom_keys</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.custom_keys" title="Link to this definition">#</a></dt>
+<dd><p>Custom keys for documents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.embedding_dimensions">
+<span class="sig-name descname"><span class="pre">embedding_dimensions</span></span><a class="headerlink" href="#langchain_redis.config.RedisConfig.embedding_dimensions" title="Link to this definition">#</a></dt>
+<dd><p>Dimensionality of embedding vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[int]</p>
+</dd>
+</dl>
+</dd></dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">RedisConfig</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">RedisConfig</span><span class="p">(</span>
+    <span class="n">index_name</span><span class="o">=</span><span class="s2">"my_index"</span><span class="p">,</span>
+    <span class="n">redis_url</span><span class="o">=</span><span class="s2">"redis://localhost:6379"</span><span class="p">,</span>
+    <span class="n">distance_metric</span><span class="o">=</span><span class="s2">"COSINE"</span><span class="p">,</span>
+    <span class="n">embedding_dimensions</span><span class="o">=</span><span class="mi">1536</span>
+<span class="p">)</span>
+
+<span class="c1"># Use this config to initialize a RedisVectorStore</span>
+<span class="n">vector_store</span> <span class="o">=</span> <span class="n">RedisVectorStore</span><span class="p">(</span><span class="n">embeddings</span><span class="o">=</span><span class="n">my_embeddings</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Only one of ‘index_schema’, ‘schema_path’, or ‘metadata_schema’
+should be specified.</p></li>
+<li><p>The ‘key_prefix’ is automatically set to ‘index_name’ if not provided.</p></li>
+<li><p>When ‘from_existing’ is True, it connects to an existing index instead
+of creating a new one.</p></li>
+<li><p>Custom validation ensures that incompatible options are not
+simultaneously specified.</p></li>
+</ul>
+</div>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connection_args</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">content_field</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'text'</span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id2">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">custom_keys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id3">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_tag_separator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'|'</span></em><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id4">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">distance_metric</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'COSINE'</span></em><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id5">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">embedding_dimensions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id5" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id6">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">embedding_field</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'embedding'</span></em><a class="headerlink" href="#id6" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id7">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_existing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#id7" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id8">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id_field</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'id'</span></em><a class="headerlink" href="#id8" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id9">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">index_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"> <span class="pre">[Optional]</span></em><a class="headerlink" href="#id9" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id10">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">index_schema</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">IndexSchema</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SkipValidation</span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"> <span class="pre">(alias</span> <span class="pre">'schema')</span></em><a class="headerlink" href="#id10" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id11">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">indexing_algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'FLAT'</span></em><a class="headerlink" href="#id11" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id12">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">key_prefix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id12" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id13">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata_schema</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"> <span class="pre">[Optional]</span></em><a class="headerlink" href="#id13" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id14">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">redis_client</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Redis</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id14" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id15">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">redis_url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'redis://localhost:6379'</span></em><a class="headerlink" href="#id15" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id16">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">return_keys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#id16" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id17">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">schema_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id17" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id18">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">storage_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hash'</span></em><a class="headerlink" href="#id18" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="id19">
+<em class="property"><span class="pre">param</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vector_datatype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'FLOAT32'</span></em><a class="headerlink" href="#id19" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.from_existing_index">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_existing_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Redis</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig"><span class="pre">RedisConfig</span></a></span></span><a class="reference internal" href="../../_modules/langchain_redis/config.html#RedisConfig.from_existing_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_redis.config.RedisConfig.from_existing_index" title="Link to this definition">#</a></dt>
+<dd><p>Create a RedisConfig object from an existing Redis index.</p>
+<p>This class method creates a RedisConfig instance based on the configuration
+of an existing index in Redis. It’s useful for connecting to and working with
+pre-existing Redis vector store indexes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_name</strong> (<em>str</em>) – The name of the existing index in Redis.</p></li>
+<li><p><strong>redis</strong> (<a class="reference internal" href="../../community/vectorstores/langchain_community.vectorstores.redis.base.Redis.html#langchain_community.vectorstores.redis.base.Redis" title="langchain_community.vectorstores.redis.base.Redis"><em>Redis</em></a>) – An active Redis client instance connected to the Redis server
+where the index exists.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A new instance of RedisConfig configured to match the existing</dt><dd><p>index.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig">RedisConfig</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Redis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">RedisConfig</span>
+
+<span class="c1"># Assuming an existing Redis connection</span>
+<span class="n">redis_client</span> <span class="o">=</span> <span class="n">Redis</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s2">"redis://localhost:6379"</span><span class="p">)</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">RedisConfig</span><span class="o">.</span><span class="n">from_existing_index</span><span class="p">(</span>
+    <span class="n">index_name</span><span class="o">=</span><span class="s2">"my_existing_index"</span><span class="p">,</span>
+    <span class="n">redis_client</span><span class="o">=</span><span class="n">redis_client</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span>  <span class="c1"># Output: my_existing_index</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">from_existing</span><span class="p">)</span>  <span class="c1"># Output: True</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>This method sets the ‘from_existing’ attribute to True, indicating that
+the configuration is based on an existing index.</p></li>
+<li><p>The method doesn’t fetch the full schema or configuration of the
+existing index. It only sets up the basic parameters needed to connect
+to the index.</p></li>
+<li><p>Additional index details (like field configurations) are not retrieved and
+should be known or discovered separately if needed.</p></li>
+<li><p>This method is particularly useful when you need to work with or extend an
+existing Redis vector store index.</p></li>
+<li><p>Ensure that the provided Redis client has the necessary permissions to
+access the specified index.</p></li>
+<li><p>If the index doesn’t exist, this method will still create a config, but
+operations using this config may fail until the index is created.</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the index_name is empty or None.</p></li>
+<li><p><strong>ConnectionError</strong> – If there’s an issue connecting to Redis using the
+    provided client.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>index_name</strong> (<em>str</em>)</p></li>
+<li><p><strong>redis</strong> (<em>Redis</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig"><em>RedisConfig</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.from_kwargs">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_kwargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig"><span class="pre">RedisConfig</span></a></span></span><a class="reference internal" href="../../_modules/langchain_redis/config.html#RedisConfig.from_kwargs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_redis.config.RedisConfig.from_kwargs" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Create a RedisConfig object with default values,</dt><dd><p>overwritten by provided kwargs.</p>
+</dd>
+</dl>
+<p>This class method allows for flexible creation of a RedisConfig object,
+using default values where not specified and overriding with any provided
+keyword arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>Any</em>) – <dl class="simple">
+<dt>Keyword arguments that match RedisConfig attributes. These will</dt><dd><p>override default values.</p>
+</dd>
+</dl>
+<p>Common kwargs include:
+- index_name (str): Name of the index in Redis.
+- redis_url (str): URL of the Redis instance.
+- distance_metric (str): Distance metric for vector similarity.
+- indexing_algorithm (str): Algorithm used for indexing.
+- vector_datatype (str): Data type of the vector.
+- embedding_dimensions (int): Dimensionality of embedding vectors.</p>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new instance of RedisConfig with applied settings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig">RedisConfig</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">RedisConfig</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">RedisConfig</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span>
+    <span class="n">index_name</span><span class="o">=</span><span class="s2">"my_custom_index"</span><span class="p">,</span>
+    <span class="n">redis_url</span><span class="o">=</span><span class="s2">"redis://custom-host:6379"</span><span class="p">,</span>
+    <span class="n">distance_metric</span><span class="o">=</span><span class="s2">"COSINE"</span><span class="p">,</span>
+    <span class="n">embedding_dimensions</span><span class="o">=</span><span class="mi">768</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span>  <span class="c1"># Output: my_custom_index</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">distance_metric</span><span class="p">)</span>  <span class="c1"># Output: COSINE</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>This method first sets all attributes to their default values and
+then overwrites them with provided kwargs.</p></li>
+<li><p>If a ‘schema’ argument is provided, it will be set as ‘index_schema’
+in the config.</p></li>
+<li><p>This method is particularly useful when you want to create a config
+with mostly default values but need to customize a few specific
+attributes.</p></li>
+<li><p>Any attribute of RedisConfig can be set through kwargs, providing full
+flexibility in configuration.</p></li>
+</ul>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.from_schema">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IndexSchema</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig"><span class="pre">RedisConfig</span></a></span></span><a class="reference internal" href="../../_modules/langchain_redis/config.html#RedisConfig.from_schema"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_redis.config.RedisConfig.from_schema" title="Link to this definition">#</a></dt>
+<dd><p>Create a RedisConfig object from an IndexSchema.</p>
+<p>This class method creates a RedisConfig instance using the provided IndexSchema,
+which defines the structure of the Redis index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schema</strong> (<em>IndexSchema</em>) – An IndexSchema object defining the structure of
+the Redis index.</p></li>
+<li><p><strong>**kwargs</strong> – <dl class="simple">
+<dt>Additional keyword arguments to override or supplement the</dt><dd><p>schema-derived settings.</p>
+</dd>
+</dl>
+<p>Common kwargs include:
+- redis_url (str): URL of the Redis instance.
+- distance_metric (str): Distance metric for vector similarity.
+- embedding_dimensions (int): Dimensionality of embedding vectors.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A new instance of RedisConfig configured based on the provided</dt><dd><p>schema and kwargs.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig">RedisConfig</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">redisvl.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexSchema</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">RedisConfig</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">IndexSchema</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span>
+    <span class="s2">"index"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"my_index"</span><span class="p">,</span> <span class="s2">"storage_type"</span><span class="p">:</span> <span class="s2">"hash"</span><span class="p">},</span>
+    <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"text"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"text"</span><span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"embedding"</span><span class="p">,</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"vector"</span><span class="p">,</span>
+            <span class="s2">"attrs"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"dims"</span><span class="p">:</span> <span class="mi">1536</span><span class="p">,</span> <span class="s2">"distance_metric"</span><span class="p">:</span> <span class="s2">"cosine"</span><span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">RedisConfig</span><span class="o">.</span><span class="n">from_schema</span><span class="p">(</span>
+    <span class="n">schema</span><span class="p">,</span>
+    <span class="n">redis_url</span><span class="o">=</span><span class="s2">"redis://localhost:6379"</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span>  <span class="c1"># Output: my_index</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">storage_type</span><span class="p">)</span>  <span class="c1"># Output: hash</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The method extracts index name, key prefix, and storage type from the
+schema.</p></li>
+<li><p>If the schema specifies a vector field, its attributes (like dimensions
+and distance metric) are used.</p></li>
+<li><p>Additional kwargs can override settings derived from the schema.</p></li>
+<li><p>This method is useful when you have a pre-defined index structure and want
+to create a matching config.</p></li>
+<li><p>The resulting config can be used to ensure that a RedisVectorStore matches
+an existing index structure.</p></li>
+</ul>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.from_yaml">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig"><span class="pre">RedisConfig</span></a></span></span><a class="reference internal" href="../../_modules/langchain_redis/config.html#RedisConfig.from_yaml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_redis.config.RedisConfig.from_yaml" title="Link to this definition">#</a></dt>
+<dd><p>Create a RedisConfig object from a YAML file containing the index schema.</p>
+<p>This class method creates a RedisConfig instance using a YAML file that defines
+the structure of the Redis index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schema_path</strong> (<em>str</em>) – Path to the YAML file containing the index schema
+definition.</p></li>
+<li><p><strong>**kwargs</strong> – <dl class="simple">
+<dt>Additional keyword arguments to override or supplement the</dt><dd><p>schema-derived settings.</p>
+</dd>
+</dl>
+<p>Common kwargs include:
+- redis_url (str): URL of the Redis instance.
+- distance_metric (str): Distance metric for vector similarity.
+- embedding_dimensions (int): Dimensionality of embedding vectors.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A new instance of RedisConfig configured based on the YAML</dt><dd><p>schema and kwargs.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig">RedisConfig</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">RedisConfig</span>
+
+<span class="c1"># Assuming 'index_schema.yaml' contains a valid index schema</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">RedisConfig</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span>
+    <span class="n">schema_path</span><span class="o">=</span><span class="s2">"path/to/index_schema.yaml"</span><span class="p">,</span>
+    <span class="n">redis_url</span><span class="o">=</span><span class="s2">"redis://localhost:6379"</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span>  <span class="c1"># Output: Name defined in YAML</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">storage_type</span><span class="p">)</span>  <span class="c1"># Output: Storage type defined in YAML</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The YAML file should contain a valid index schema definition
+compatible with RedisVL.</p></li>
+<li><p>This method internally uses IndexSchema.from_yaml() to parse
+the YAML file.</p></li>
+<li><p>Settings derived from the YAML schema can be overridden by
+additional kwargs.</p></li>
+<li><p>This method is particularly useful when index structures are defined
+externally in YAML files.</p></li>
+<li><p>Ensure that the YAML file is correctly formatted and accessible at
+the given path.</p></li>
+<li><p>Any errors in reading or parsing the YAML file will be propagated
+as exceptions.</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If the specified YAML file does not exist.</p></li>
+<li><p><strong>YAMLError</strong> – If there are issues parsing the YAML file.</p></li>
+<li><p><strong>ValueError</strong> – If the YAML content is not a valid index schema.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>schema_path</strong> (<em>str</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig"><em>RedisConfig</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.redis">
+<span class="sig-name descname"><span class="pre">redis</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Redis</span></span></span><a class="reference internal" href="../../_modules/langchain_redis/config.html#RedisConfig.redis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_redis.config.RedisConfig.redis" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Redis</em></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.to_index_schema">
+<span class="sig-name descname"><span class="pre">to_index_schema</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">IndexSchema</span></span></span><a class="reference internal" href="../../_modules/langchain_redis/config.html#RedisConfig.to_index_schema"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_redis.config.RedisConfig.to_index_schema" title="Link to this definition">#</a></dt>
+<dd><p>Convert the RedisConfig to an IndexSchema.</p>
+<p>This method creates an IndexSchema object based on the current configuration.
+It’s useful for generating a schema that can be used to create or update
+a Redis index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An IndexSchema object representing the current configuration.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>IndexSchema</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">RedisConfig</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">RedisConfig</span><span class="p">(</span>
+    <span class="n">index_name</span><span class="o">=</span><span class="s2">"my_index"</span><span class="p">,</span>
+    <span class="n">embedding_dimensions</span><span class="o">=</span><span class="mi">1536</span><span class="p">,</span>
+    <span class="n">distance_metric</span><span class="o">=</span><span class="s2">"COSINE"</span><span class="p">,</span>
+    <span class="n">metadata_schema</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"author"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"text"</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"year"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"numeric"</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">to_index_schema</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="c1"># Output: my_index</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">fields</span><span class="p">))</span>
+<span class="c1"># Output: 4 (id, content, embedding, author, year)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If an index_schema is already set, it will be returned directly.</p></li>
+<li><p>If a schema_path is set, the schema will be loaded from the YAML file.</p></li>
+<li><p>Otherwise, a new IndexSchema is created based on the current
+configuration.</p></li>
+<li><p>The resulting schema includes fields for id, content, and embedding
+vector, as well as any additional fields specified in metadata_schema.</p></li>
+<li><p>The embedding field is configured with the specified dimensions,
+distance metric, and other relevant attributes.</p></li>
+<li><p>This method is particularly useful when you need to create a new index or
+validate the structure of an existing one.</p></li>
+<li><p>The generated schema can be used with RedisVL operations that require
+an IndexSchema.</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If essential configuration elements (like embedding_dimensions)
+    are missing.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>IndexSchema</em></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_redis.config.RedisConfig.with_metadata_schema">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">with_metadata_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata_schema</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig"><span class="pre">RedisConfig</span></a></span></span><a class="reference internal" href="../../_modules/langchain_redis/config.html#RedisConfig.with_metadata_schema"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_redis.config.RedisConfig.with_metadata_schema" title="Link to this definition">#</a></dt>
+<dd><p>Create a RedisConfig object with a specified metadata schema.</p>
+<p>This class method creates a RedisConfig instance using a provided
+metadata schema, which defines the structure of additional metadata
+fields in the Redis index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metadata_schema</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>]</em>) – A list of dictionaries defining
+the metadata fields. Each dictionary should contain at least ‘name’
+and ‘type’ keys.</p></li>
+<li><p><strong>**kwargs</strong> – <dl class="simple">
+<dt>Additional keyword arguments to configure the RedisConfig</dt><dd><p>instance.</p>
+</dd>
+</dl>
+<p>Common kwargs include:
+- index_name (str): Name of the index in Redis.
+- redis_url (str): URL of the Redis instance.
+- distance_metric (str): Distance metric for vector similarity.
+- embedding_dimensions (int): Dimensionality of embedding vectors.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A new instance of RedisConfig configured with the specified</dt><dd><p>metadata schema.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig">RedisConfig</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">RedisConfig</span>
+
+<span class="n">metadata_schema</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"author"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"text"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"publication_date"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"numeric"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"tags"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"tag"</span><span class="p">,</span> <span class="s2">"separator"</span><span class="p">:</span> <span class="s2">","</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">RedisConfig</span><span class="o">.</span><span class="n">with_metadata_schema</span><span class="p">(</span>
+    <span class="n">metadata_schema</span><span class="p">,</span>
+    <span class="n">index_name</span><span class="o">=</span><span class="s2">"book_index"</span><span class="p">,</span>
+    <span class="n">redis_url</span><span class="o">=</span><span class="s2">"redis://localhost:6379"</span><span class="p">,</span>
+    <span class="n">embedding_dimensions</span><span class="o">=</span><span class="mi">1536</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">metadata_schema</span><span class="p">)</span>  <span class="c1"># Output: The metadata schema list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span>  <span class="c1"># Output: book_index</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The metadata_schema defines additional fields beyond the default content
+and embedding fields.</p></li>
+<li><p>Common metadata field types include ‘text’, ‘numeric’, and ‘tag’.</p></li>
+<li><p>For ‘tag’ fields, you can specify a custom separator using the
+‘separator’ key.</p></li>
+<li><p>This method is useful when you need to index and search on specific
+metadata attributes.</p></li>
+<li><p>The resulting config ensures that the RedisVectorStore will create
+an index with the specified metadata fields.</p></li>
+<li><p>Make sure the metadata schema aligns with the actual metadata you
+plan to store with your documents.</p></li>
+<li><p>This method sets only the metadata_schema; other configurations
+should be provided via kwargs.</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the metadata_schema is not a list of dictionaries or
+    if required keys are missing.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>metadata_schema</strong> (<em>List</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>]</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#langchain_redis.config.RedisConfig" title="langchain_redis.config.RedisConfig"><em>RedisConfig</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<ul class="simple">
+</ul>
+</section>
+</article>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig"><code class="docutils literal notranslate"><span class="pre">RedisConfig</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.index_name"><code class="docutils literal notranslate"><span class="pre">index_name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.from_existing"><code class="docutils literal notranslate"><span class="pre">from_existing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.key_prefix"><code class="docutils literal notranslate"><span class="pre">key_prefix</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.redis_url"><code class="docutils literal notranslate"><span class="pre">redis_url</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.redis_client"><code class="docutils literal notranslate"><span class="pre">redis_client</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.connection_args"><code class="docutils literal notranslate"><span class="pre">connection_args</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.distance_metric"><code class="docutils literal notranslate"><span class="pre">distance_metric</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.indexing_algorithm"><code class="docutils literal notranslate"><span class="pre">indexing_algorithm</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.vector_datatype"><code class="docutils literal notranslate"><span class="pre">vector_datatype</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.storage_type"><code class="docutils literal notranslate"><span class="pre">storage_type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.id_field"><code class="docutils literal notranslate"><span class="pre">id_field</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.content_field"><code class="docutils literal notranslate"><span class="pre">content_field</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.embedding_field"><code class="docutils literal notranslate"><span class="pre">embedding_field</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.default_tag_separator"><code class="docutils literal notranslate"><span class="pre">default_tag_separator</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.metadata_schema"><code class="docutils literal notranslate"><span class="pre">metadata_schema</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.index_schema"><code class="docutils literal notranslate"><span class="pre">index_schema</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.schema_path"><code class="docutils literal notranslate"><span class="pre">schema_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.return_keys"><code class="docutils literal notranslate"><span class="pre">return_keys</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.custom_keys"><code class="docutils literal notranslate"><span class="pre">custom_keys</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.embedding_dimensions"><code class="docutils literal notranslate"><span class="pre">embedding_dimensions</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">connection_args</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">content_field</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">custom_keys</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">default_tag_separator</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">distance_metric</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">embedding_dimensions</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">embedding_field</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">from_existing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">id_field</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><code class="docutils literal notranslate"><span class="pre">index_name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><code class="docutils literal notranslate"><span class="pre">index_schema</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><code class="docutils literal notranslate"><span class="pre">indexing_algorithm</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><code class="docutils literal notranslate"><span class="pre">key_prefix</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">metadata_schema</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">redis_client</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><code class="docutils literal notranslate"><span class="pre">redis_url</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><code class="docutils literal notranslate"><span class="pre">return_keys</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><code class="docutils literal notranslate"><span class="pre">schema_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"><code class="docutils literal notranslate"><span class="pre">storage_type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"><code class="docutils literal notranslate"><span class="pre">vector_datatype</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.from_existing_index"><code class="docutils literal notranslate"><span class="pre">from_existing_index()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.from_kwargs"><code class="docutils literal notranslate"><span class="pre">from_kwargs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.from_schema"><code class="docutils literal notranslate"><span class="pre">from_schema()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.from_yaml"><code class="docutils literal notranslate"><span class="pre">from_yaml()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.redis"><code class="docutils literal notranslate"><span class="pre">redis()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.to_index_schema"><code class="docutils literal notranslate"><span class="pre">to_index_schema()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_redis.config.RedisConfig.with_metadata_schema"><code class="docutils literal notranslate"><span class="pre">with_metadata_schema()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2023, LangChain Inc.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
