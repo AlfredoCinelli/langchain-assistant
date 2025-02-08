@@ -1,0 +1,906 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-9B66JQQH2F"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9B66JQQH2F');
+    </script>
+<title>VectorType — 🦜🔗 LangChain  documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/autodoc_pydantic.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=488f4e83" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=3b5cce75"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'sqlserver/vectorstores/langchain_sqlserver.vectorstores.VectorType';</script>
+<link href="../../_static/favicon.png" rel="icon"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="../../standard_tests/index.html" rel="next" title="langchain-tests: 0.3.11"/>
+<link href="langchain_sqlserver.vectorstores.SQLServer_VectorStore.html" rel="prev" title="SQLServer_VectorStore"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+<meta content="Feb 07, 2025" name="docbuild:last-update"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-light" src="../../_static/wordmark-api.svg"/>
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-dark pst-js-only" src="../../_static/wordmark-api-dark.svg"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Base packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../langchain/index.html">Langchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../text_splitters/index.html">Text Splitters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental/index.html">Experimental</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integrations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ai21/index.html">AI21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../anthropic/index.html">Anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../astradb/index.html">AstraDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aws/index.html">AWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../azure_dynamic_sessions/index.html">Azure Dynamic Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cerebras/index.html">Cerebras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chroma/index.html">Chroma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cohere/index.html">Cohere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deepseek/index.html">Deepseek</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elasticsearch/index.html">Elasticsearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exa/index.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fireworks/index.html">Fireworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../google_community/index.html">Google Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../google_genai/index.html">Google GenAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../google_vertexai/index.html">Google VertexAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../groq/index.html">Groq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../huggingface/index.html">Huggingface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ibm/index.html">IBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../milvus/index.html">Milvus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mistralai/index.html">MistralAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../neo4j/index.html">Neo4J</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nomic/index.html">Nomic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nvidia_ai_endpoints/index.html">Nvidia Ai Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ollama/index.html">Ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openai/index.html">OpenAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pinecone/index.html">Pinecone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../postgres/index.html">Postgres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../prompty/index.html">Prompty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qdrant/index.html">Qdrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../redis/index.html">Redis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sema4/index.html">Sema4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snowflake/index.html">Snowflake</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Sqlserver</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../vectorstores.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vectorstores</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="langchain_sqlserver.vectorstores.DistanceStrategy.html">DistanceStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="langchain_sqlserver.vectorstores.SQLServer_VectorStore.html">SQLServer_VectorStore</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">VectorType</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../standard_tests/index.html">Standard Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../together/index.html">Together</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unstructured/index.html">Unstructured</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upstage/index.html">Upstage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../voyageai/index.html">VoyageAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weaviate/index.html">Weaviate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xai/index.html">XAI</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../../reference.html">LangChain Python API Reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">langchain-sqlserver: 0.1.1</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../vectorstores.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vectorstores</span></code></a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">VectorType</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="vectortype">
+<h1>VectorType<a class="headerlink" href="#vectortype" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">langchain_sqlserver.vectorstores.</span></span><span class="sig-name descname"><span class="pre">VectorType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/langchain_sqlserver/vectorstores.html#VectorType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType" title="Link to this definition">#</a></dt>
+<dd><p>VectorType - A custom type definition.</p>
+<p>__init__ for VectorType class.</p>
+<p class="rubric">Attributes</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cache_ok</span></code></p></td>
+<td><p>Indicate if statements using this <code class="xref py py-class docutils literal notranslate"><span class="pre">ExternalType</span></code> are "safe to cache".</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensure_kwarg</span></code></p></td>
+<td><p>a regular expression that indicates method names for which the method should accept <code class="docutils literal notranslate"><span class="pre">**kw</span></code> arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hashable</span></code></p></td>
+<td><p>Flag, if False, means values from this type aren't hashable.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">python_type</span></code></p></td>
+<td><p>Return the Python type object expected to be returned by instances of this type, if known.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">render_bind_cast</span></code></p></td>
+<td><p>Render bind casts for <code class="xref py py-attr docutils literal notranslate"><span class="pre">BindTyping.RENDER_CASTS</span></code> mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">render_literal_cast</span></code></p></td>
+<td><p>render casts when rendering a value as an inline literal, e.g. with <code class="xref py py-meth docutils literal notranslate"><span class="pre">TypeEngine.literal_processor()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_evaluate_none</span></code></p></td>
+<td><p>If True, the Python constant <code class="docutils literal notranslate"><span class="pre">None</span></code> is considered to be handled explicitly by this type.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_key_function</span></code></p></td>
+<td><p>A sorting function that can be passed as the key to sorted.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.__init__" title="langchain_sqlserver.vectorstores.VectorType.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(length)</p></td>
+<td><p>__init__ for VectorType class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.adapt" title="langchain_sqlserver.vectorstores.VectorType.adapt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adapt</span></code></a>(cls, **kw)</p></td>
+<td><p>Produce an "adapted" form of this type, given an "impl" class to work with.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.as_generic" title="langchain_sqlserver.vectorstores.VectorType.as_generic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_generic</span></code></a>([allow_nulltype])</p></td>
+<td><p>Return an instance of the generic type corresponding to this type using heuristic rule.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.bind_expression" title="langchain_sqlserver.vectorstores.VectorType.bind_expression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bind_expression</span></code></a>(bindvalue)</p></td>
+<td><p>Given a bind value (i.e. a <code class="xref py py-class docutils literal notranslate"><span class="pre">BindParameter</span></code> instance), return a SQL expression in its place.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.bind_processor" title="langchain_sqlserver.vectorstores.VectorType.bind_processor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bind_processor</span></code></a>(dialect)</p></td>
+<td><p>bind_processor function for VectorType class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.coerce_compared_value" title="langchain_sqlserver.vectorstores.VectorType.coerce_compared_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coerce_compared_value</span></code></a>(op, value)</p></td>
+<td><p>Suggest a type for a 'coerced' Python value in an expression.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.column_expression" title="langchain_sqlserver.vectorstores.VectorType.column_expression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">column_expression</span></code></a>(colexpr)</p></td>
+<td><p>Given a SELECT column expression, return a wrapping SQL expression.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.compare_values" title="langchain_sqlserver.vectorstores.VectorType.compare_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_values</span></code></a>(x, y)</p></td>
+<td><p>Compare two values for equality.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.compile" title="langchain_sqlserver.vectorstores.VectorType.compile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compile</span></code></a>([dialect])</p></td>
+<td><p>Produce a string-compiled form of this <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeEngine</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.copy" title="langchain_sqlserver.vectorstores.VectorType.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>(**kw)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.copy_value" title="langchain_sqlserver.vectorstores.VectorType.copy_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy_value</span></code></a>(value)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.dialect_impl" title="langchain_sqlserver.vectorstores.VectorType.dialect_impl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dialect_impl</span></code></a>(dialect)</p></td>
+<td><p>Return a dialect-specific implementation for this <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeEngine</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.evaluates_none" title="langchain_sqlserver.vectorstores.VectorType.evaluates_none"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluates_none</span></code></a>()</p></td>
+<td><p>Return a copy of this type which has the <code class="xref py py-attr docutils literal notranslate"><span class="pre">should_evaluate_none</span></code> flag set to True.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.get_col_spec" title="langchain_sqlserver.vectorstores.VectorType.get_col_spec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_col_spec</span></code></a>(**kw)</p></td>
+<td><p>get_col_spec function for VectorType class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.get_dbapi_type" title="langchain_sqlserver.vectorstores.VectorType.get_dbapi_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dbapi_type</span></code></a>(dbapi)</p></td>
+<td><p>Return the corresponding type object from the underlying DB-API, if any.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.literal_processor" title="langchain_sqlserver.vectorstores.VectorType.literal_processor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">literal_processor</span></code></a>(dialect)</p></td>
+<td><p>Return a conversion function for processing literal values that are to be rendered directly without using binds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.result_processor" title="langchain_sqlserver.vectorstores.VectorType.result_processor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">result_processor</span></code></a>(dialect, coltype)</p></td>
+<td><p>result_processor function for VectorType class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#langchain_sqlserver.vectorstores.VectorType.with_variant" title="langchain_sqlserver.vectorstores.VectorType.with_variant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">with_variant</span></code></a>(type_, *dialect_names)</p></td>
+<td><p>Produce a copy of this type object that will utilize the given type when applied to the dialect of the given name.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>length</strong> (<em>int</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/langchain_sqlserver/vectorstores.html#VectorType.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.__init__" title="Link to this definition">#</a></dt>
+<dd><p>__init__ for VectorType class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>length</strong> (<em>int</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.adapt">
+<span class="sig-name descname"><span class="pre">adapt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">TypeEngine</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TypeEngineMixin</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">TypeEngine</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.adapt" title="Link to this definition">#</a></dt>
+<dd><p>Produce an “adapted” form of this type, given an “impl” class
+to work with.</p>
+<p>This method is used internally to associate generic
+types with “implementation” types that are specific to a particular
+dialect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> (<em>Type</em><em>[</em><em>TypeEngine</em><em> | </em><em>TypeEngineMixin</em><em>]</em>)</p></li>
+<li><p><strong>kw</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>TypeEngine</em></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.as_generic">
+<span class="sig-name descname"><span class="pre">as_generic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allow_nulltype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">TypeEngine</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.as_generic" title="Link to this definition">#</a></dt>
+<dd><p>Return an instance of the generic type corresponding to this type
+using heuristic rule. The method may be overridden if this
+heuristic rule is not sufficient.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.dialects.mysql</span><span class="w"> </span><span class="kn">import</span> <span class="n">INTEGER</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">INTEGER</span><span class="p">(</span><span class="n">display_width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">as_generic</span><span class="p">()</span>
+<span class="go">Integer()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.dialects.mysql</span><span class="w"> </span><span class="kn">import</span> <span class="n">NVARCHAR</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">NVARCHAR</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">as_generic</span><span class="p">()</span>
+<span class="go">Unicode(length=100)</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.4.0b2.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">metadata_reflection_dbagnostic_types</span> - describes the
+use of <code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeEngine.as_generic()</span></code> in conjunction with
+the <code class="xref py py-meth docutils literal notranslate"><span class="pre">_sql.DDLEvents.column_reflect()</span></code> event, which is its
+intended use.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>allow_nulltype</strong> (<em>bool</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>TypeEngine</em></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.bind_expression">
+<span class="sig-name descname"><span class="pre">bind_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bindvalue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BindParameter</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">ColumnElement</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.bind_expression" title="Link to this definition">#</a></dt>
+<dd><p>Given a bind value (i.e. a <code class="xref py py-class docutils literal notranslate"><span class="pre">BindParameter</span></code> instance),
+return a SQL expression in its place.</p>
+<p>This is typically a SQL function that wraps the existing bound
+parameter within the statement.  It is used for special data types
+that require literals being wrapped in some special database function
+in order to coerce an application-level value into a database-specific
+format.  It is the SQL analogue of the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">TypeEngine.bind_processor()</span></code> method.</p>
+<p>This method is called during the <strong>SQL compilation</strong> phase of a
+statement, when rendering a SQL string. It is <strong>not</strong> called
+against specific values.</p>
+<p>Note that this method, when implemented, should always return
+the exact same structure, without any conditional logic, as it
+may be used in an executemany() call against an arbitrary number
+of bound parameter sets.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is only called relative to a <strong>dialect specific type
+object</strong>, which is often <strong>private to a dialect in use</strong> and is not
+the same type object as the public facing one, which means it’s not
+feasible to subclass a <code class="xref py py-class docutils literal notranslate"><span class="pre">types.TypeEngine</span></code> class in order to
+provide an alternate <code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeEngine.bind_expression()</span></code>
+method, unless subclassing the <code class="xref py py-class docutils literal notranslate"><span class="pre">_types.UserDefinedType</span></code>
+class explicitly.</p>
+<p>To provide alternate behavior for
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeEngine.bind_expression()</span></code>, implement a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">_types.TypeDecorator</span></code> class and provide an implementation
+of <code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeDecorator.bind_expression()</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">types_typedecorator</span></p>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">types_sql_value_processing</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bindvalue</strong> (<em>BindParameter</em><em>[</em><em>_T</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[ColumnElement[_T]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.bind_processor">
+<span class="sig-name descname"><span class="pre">bind_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../../_modules/langchain_sqlserver/vectorstores.html#VectorType.bind_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.bind_processor" title="Link to this definition">#</a></dt>
+<dd><p>bind_processor function for VectorType class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dialect</strong> (<em>Any</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Any</em></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.coerce_compared_value">
+<span class="sig-name descname"><span class="pre">coerce_compared_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">OperatorType</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">TypeEngine</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.coerce_compared_value" title="Link to this definition">#</a></dt>
+<dd><p>Suggest a type for a ‘coerced’ Python value in an expression.</p>
+<p>Default behavior for <code class="xref py py-class docutils literal notranslate"><span class="pre">UserDefinedType</span></code> is the
+same as that of <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeDecorator</span></code>; by default it returns
+<code class="docutils literal notranslate"><span class="pre">self</span></code>, assuming the compared value should be coerced into
+the same type as this one.  See
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">TypeDecorator.coerce_compared_value()</span></code> for more detail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>op</strong> (<em>Optional</em><em>[</em><em>OperatorType</em><em>]</em>)</p></li>
+<li><p><strong>value</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>TypeEngine[Any]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.column_expression">
+<span class="sig-name descname"><span class="pre">column_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colexpr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ColumnElement</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">ColumnElement</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.column_expression" title="Link to this definition">#</a></dt>
+<dd><p>Given a SELECT column expression, return a wrapping SQL expression.</p>
+<p>This is typically a SQL function that wraps a column expression
+as rendered in the columns clause of a SELECT statement.
+It is used for special data types that require
+columns to be wrapped in some special database function in order
+to coerce the value before being sent back to the application.
+It is the SQL analogue of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">TypeEngine.result_processor()</span></code>
+method.</p>
+<p>This method is called during the <strong>SQL compilation</strong> phase of a
+statement, when rendering a SQL string. It is <strong>not</strong> called
+against specific values.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is only called relative to a <strong>dialect specific type
+object</strong>, which is often <strong>private to a dialect in use</strong> and is not
+the same type object as the public facing one, which means it’s not
+feasible to subclass a <code class="xref py py-class docutils literal notranslate"><span class="pre">types.TypeEngine</span></code> class in order to
+provide an alternate <code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeEngine.column_expression()</span></code>
+method, unless subclassing the <code class="xref py py-class docutils literal notranslate"><span class="pre">_types.UserDefinedType</span></code>
+class explicitly.</p>
+<p>To provide alternate behavior for
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeEngine.column_expression()</span></code>, implement a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">_types.TypeDecorator</span></code> class and provide an implementation
+of <code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeDecorator.column_expression()</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">types_typedecorator</span></p>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">types_sql_value_processing</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>colexpr</strong> (<em>ColumnElement</em><em>[</em><em>_T</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[ColumnElement[_T]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.compare_values">
+<span class="sig-name descname"><span class="pre">compare_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.compare_values" title="Link to this definition">#</a></dt>
+<dd><p>Compare two values for equality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Any</em>)</p></li>
+<li><p><strong>y</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dialect</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.compile" title="Link to this definition">#</a></dt>
+<dd><p>Produce a string-compiled form of this <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeEngine</span></code>.</p>
+<p>When called with no arguments, uses a “default” dialect
+to produce a string result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dialect</strong> (<em>Optional</em><em>[</em><em>Dialect</em><em>]</em>) – a <code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code> instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.copy" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kw</strong> (<em>Any</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Self</em></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.copy_value">
+<span class="sig-name descname"><span class="pre">copy_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.copy_value" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>Any</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Any</em></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.dialect_impl">
+<span class="sig-name descname"><span class="pre">dialect_impl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dialect</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">TypeEngine</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.dialect_impl" title="Link to this definition">#</a></dt>
+<dd><p>Return a dialect-specific implementation for this
+<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeEngine</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dialect</strong> (<em>Dialect</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>TypeEngine[_T]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.evaluates_none">
+<span class="sig-name descname"><span class="pre">evaluates_none</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.evaluates_none" title="Link to this definition">#</a></dt>
+<dd><p>Return a copy of this type which has the
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">should_evaluate_none</span></code> flag set to True.</p>
+<p>E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Table</span><span class="p">(</span>
+    <span class="s2">"some_table"</span><span class="p">,</span>
+    <span class="n">metadata</span><span class="p">,</span>
+    <span class="n">Column</span><span class="p">(</span>
+        <span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">evaluates_none</span><span class="p">(),</span>
+        <span class="n">nullable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">server_default</span><span class="o">=</span><span class="s2">"no value"</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The ORM uses this flag to indicate that a positive value of <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is passed to the column in an INSERT statement, rather than omitting
+the column from the INSERT statement which has the effect of firing
+off column-level defaults.   It also allows for types which have
+special behavior associated with the Python None value to indicate
+that the value doesn’t necessarily translate into SQL NULL; a
+prime example of this is a JSON type which may wish to persist the
+JSON value <code class="docutils literal notranslate"><span class="pre">'null'</span></code>.</p>
+<p>In all cases, the actual NULL SQL value can be always be
+persisted in any column by using
+the <code class="xref py py-obj docutils literal notranslate"><span class="pre">_expression.null</span></code> SQL construct in an INSERT statement
+or associated with an ORM-mapped attribute.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The “evaluates none” flag does <strong>not</strong> apply to a value
+of <code class="docutils literal notranslate"><span class="pre">None</span></code> passed to <a href="#id1"><span class="problematic" id="id2">:paramref:`_schema.Column.default`</span></a> or
+<a href="#id3"><span class="problematic" id="id4">:paramref:`_schema.Column.server_default`</span></a>; in these cases,
+<code class="docutils literal notranslate"><span class="pre">None</span></code>
+still means “no default”.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">session_forcing_null</span> - in the ORM documentation</p>
+<p><a href="#id5"><span class="problematic" id="id6">:paramref:`.postgresql.JSON.none_as_null`</span></a> - PostgreSQL JSON
+interaction with this flag.</p>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">TypeEngine.should_evaluate_none</span></code> - class-level flag</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Self</em></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.get_col_spec">
+<span class="sig-name descname"><span class="pre">get_col_spec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../_modules/langchain_sqlserver/vectorstores.html#VectorType.get_col_spec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.get_col_spec" title="Link to this definition">#</a></dt>
+<dd><p>get_col_spec function for VectorType class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kw</strong> (<em>Any</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.get_dbapi_type">
+<span class="sig-name descname"><span class="pre">get_dbapi_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dbapi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModuleType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.get_dbapi_type" title="Link to this definition">#</a></dt>
+<dd><p>Return the corresponding type object from the underlying DB-API, if
+any.</p>
+<p>This can be useful for calling <code class="docutils literal notranslate"><span class="pre">setinputsizes()</span></code>, for example.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dbapi</strong> (<em>ModuleType</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Any</em> | None</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.literal_processor">
+<span class="sig-name descname"><span class="pre">literal_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dialect</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">_LiteralProcessorType</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.literal_processor" title="Link to this definition">#</a></dt>
+<dd><p>Return a conversion function for processing literal values that are
+to be rendered directly without using binds.</p>
+<p>This function is used when the compiler makes use of the
+“literal_binds” flag, typically used in DDL generation as well
+as in certain scenarios where backends don’t accept bound parameters.</p>
+<p>Returns a callable which will receive a literal Python value
+as the sole positional argument and will return a string representation
+to be rendered in a SQL statement.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is only called relative to a <strong>dialect specific type
+object</strong>, which is often <strong>private to a dialect in use</strong> and is not
+the same type object as the public facing one, which means it’s not
+feasible to subclass a <code class="xref py py-class docutils literal notranslate"><span class="pre">types.TypeEngine</span></code> class in order to
+provide an alternate <code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeEngine.literal_processor()</span></code>
+method, unless subclassing the <code class="xref py py-class docutils literal notranslate"><span class="pre">_types.UserDefinedType</span></code>
+class explicitly.</p>
+<p>To provide alternate behavior for
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeEngine.literal_processor()</span></code>, implement a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">_types.TypeDecorator</span></code> class and provide an implementation
+of <code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeDecorator.process_literal_param()</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">types_typedecorator</span></p>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dialect</strong> (<em>Dialect</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[_LiteralProcessorType[_T]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.result_processor">
+<span class="sig-name descname"><span class="pre">result_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coltype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../../_modules/langchain_sqlserver/vectorstores.html#VectorType.result_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.result_processor" title="Link to this definition">#</a></dt>
+<dd><p>result_processor function for VectorType class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dialect</strong> (<em>Any</em>)</p></li>
+<li><p><strong>coltype</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Any</em></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="langchain_sqlserver.vectorstores.VectorType.with_variant">
+<span class="sig-name descname"><span class="pre">with_variant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">_TypeEngineArgument</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">dialect_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#langchain_sqlserver.vectorstores.VectorType.with_variant" title="Link to this definition">#</a></dt>
+<dd><p>Produce a copy of this type object that will utilize the given
+type when applied to the dialect of the given name.</p>
+<p>e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.dialects</span><span class="w"> </span><span class="kn">import</span> <span class="n">mysql</span>
+
+<span class="n">string_type</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span>
+
+<span class="n">string_type</span> <span class="o">=</span> <span class="n">string_type</span><span class="o">.</span><span class="n">with_variant</span><span class="p">(</span>
+    <span class="n">mysql</span><span class="o">.</span><span class="n">VARCHAR</span><span class="p">(</span><span class="n">collation</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">),</span> <span class="s2">"mysql"</span><span class="p">,</span> <span class="s2">"mariadb"</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The variant mapping indicates that when this type is
+interpreted by a specific dialect, it will instead be
+transmuted into the given type, rather than using the
+primary type.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 2.0: </span>the <code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeEngine.with_variant()</span></code>
+method now works with a <code class="xref py py-class docutils literal notranslate"><span class="pre">_types.TypeEngine</span></code> object “in
+place”, returning a copy of the original type rather than returning
+a wrapping object; the <code class="docutils literal notranslate"><span class="pre">Variant</span></code> class is no longer used.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type_</strong> (<em>_TypeEngineArgument</em><em>[</em><em>Any</em><em>]</em>) – a <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeEngine</span></code> that will be selected
+as a variant from the originating type, when a dialect
+of the given name is in use.</p></li>
+<li><p><strong>*dialect_names</strong> (<em>str</em>) – <p>one or more base names of the dialect which
+uses this type. (i.e. <code class="docutils literal notranslate"><span class="pre">'postgresql'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mysql'</span></code>, etc.)</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 2.0: </span>multiple dialect names can be specified
+for one variant.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Self</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">types_with_variant</span> - illustrates the use of
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_types.TypeEngine.with_variant()</span></code>.</p>
+</div>
+</dd></dl>
+</dd></dl>
+<ul class="simple">
+</ul>
+</section>
+</article>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType"><code class="docutils literal notranslate"><span class="pre">VectorType</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.adapt"><code class="docutils literal notranslate"><span class="pre">adapt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.as_generic"><code class="docutils literal notranslate"><span class="pre">as_generic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.bind_expression"><code class="docutils literal notranslate"><span class="pre">bind_expression()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.bind_processor"><code class="docutils literal notranslate"><span class="pre">bind_processor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.coerce_compared_value"><code class="docutils literal notranslate"><span class="pre">coerce_compared_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.column_expression"><code class="docutils literal notranslate"><span class="pre">column_expression()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.compare_values"><code class="docutils literal notranslate"><span class="pre">compare_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.compile"><code class="docutils literal notranslate"><span class="pre">compile()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.copy"><code class="docutils literal notranslate"><span class="pre">copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.copy_value"><code class="docutils literal notranslate"><span class="pre">copy_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.dialect_impl"><code class="docutils literal notranslate"><span class="pre">dialect_impl()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.evaluates_none"><code class="docutils literal notranslate"><span class="pre">evaluates_none()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.get_col_spec"><code class="docutils literal notranslate"><span class="pre">get_col_spec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.get_dbapi_type"><code class="docutils literal notranslate"><span class="pre">get_dbapi_type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.literal_processor"><code class="docutils literal notranslate"><span class="pre">literal_processor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.result_processor"><code class="docutils literal notranslate"><span class="pre">result_processor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langchain_sqlserver.vectorstores.VectorType.with_variant"><code class="docutils literal notranslate"><span class="pre">with_variant()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2023, LangChain Inc.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

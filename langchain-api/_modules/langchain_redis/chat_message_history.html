@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-9B66JQQH2F"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9B66JQQH2F');
+    </script>
+<title>langchain_redis.chat_message_history — 🦜🔗 LangChain  documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/autodoc_pydantic.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=488f4e83" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=3b5cce75"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '_modules/langchain_redis/chat_message_history';</script>
+<link href="../../_static/favicon.png" rel="icon"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+<meta content="Feb 07, 2025" name="docbuild:last-update"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-light" src="../../_static/wordmark-api.svg"/>
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-dark pst-js-only" src="../../_static/wordmark-api-dark.svg"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar hide-on-wide" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Module code</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">langchain_redis.chat_message_history</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<h1>Source code for langchain_redis.chat_message_history</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>  <span class="c1"># noqa: I001</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.chat_history</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseChatMessageHistory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseMessage</span><span class="p">,</span> <span class="n">messages_from_dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Redis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">redis.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResponseError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">redis.commands.json.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">redis.commands.search.field</span><span class="w"> </span><span class="kn">import</span> <span class="n">NumericField</span><span class="p">,</span> <span class="n">TagField</span><span class="p">,</span> <span class="n">TextField</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">redis.commands.search.indexDefinition</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexDefinition</span><span class="p">,</span> <span class="n">IndexType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">redis.commands.search.query</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_redis.version</span><span class="w"> </span><span class="kn">import</span> <span class="n">__full_lib_name__</span>
+
+
+<div class="viewcode-block" id="RedisChatMessageHistory">
+<a class="viewcode-back" href="../../redis/chat_message_history/langchain_redis.chat_message_history.RedisChatMessageHistory.html#langchain_redis.chat_message_history.RedisChatMessageHistory">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RedisChatMessageHistory</span><span class="p">(</span><span class="n">BaseChatMessageHistory</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Redis-based implementation of chat message history.</span>
+
+<span class="sd">    This class provides a way to store and retrieve chat message history using Redis.</span>
+<span class="sd">    It implements the BaseChatMessageHistory interface and uses Redis JSON capabilities</span>
+<span class="sd">    for efficient storage and retrieval of messages.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        redis_client (Redis): The Redis client instance.</span>
+<span class="sd">        session_id (str): A unique identifier for the chat session.</span>
+<span class="sd">        key_prefix (str): Prefix for Redis keys to namespace the messages.</span>
+<span class="sd">        ttl (Optional[int]): Time-to-live for message entries in seconds.</span>
+<span class="sd">        index_name (str): Name of the Redis search index for message retrieval.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        session_id (str): A unique identifier for the chat session.</span>
+<span class="sd">        redis_url (str, optional): URL of the Redis instance. Defaults to "redis://localhost:6379".</span>
+<span class="sd">        key_prefix (str, optional): Prefix for Redis keys. Defaults to "chat:".</span>
+<span class="sd">        ttl (Optional[int], optional): Time-to-live for entries in seconds.</span>
+<span class="sd">                                       Defaults to None (no expiration).</span>
+<span class="sd">        index_name (str, optional): Name of the Redis search index.</span>
+<span class="sd">                                    Defaults to "idx:chat_history".</span>
+<span class="sd">        redis (Optional[Redis], optional): Existing Redis client instance. If provided,</span>
+<span class="sd">                                           redis_url is ignored.</span>
+<span class="sd">        **kwargs: Additional keyword arguments to pass to the Redis client.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from langchain_redis import RedisChatMessageHistory</span>
+<span class="sd">            from langchain_core.messages import HumanMessage, AIMessage</span>
+
+<span class="sd">            history = RedisChatMessageHistory(</span>
+<span class="sd">                session_id="user123",</span>
+<span class="sd">                redis_url="redis://localhost:6379",</span>
+<span class="sd">                ttl=3600  # Messages expire after 1 hour</span>
+<span class="sd">            )</span>
+
+<span class="sd">            # Add messages to the history</span>
+<span class="sd">            history.add_message(HumanMessage(content="Hello, AI!"))</span>
+<span class="sd">            history.add_message(</span>
+<span class="sd">              AIMessage(content="Hello, human! How can I assist you today?")</span>
+<span class="sd">            )</span>
+
+<span class="sd">            # Retrieve all messages</span>
+<span class="sd">            messages = history.messages</span>
+<span class="sd">            for message in messages:</span>
+<span class="sd">                print(f"{message.type}: {message.content}")</span>
+
+<span class="sd">            # Clear the history</span>
+<span class="sd">            history.clear()</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        - This class uses Redis JSON for storing messages, allowing for efficient</span>
+<span class="sd">          querying and retrieval.</span>
+<span class="sd">        - A Redis search index is created to enable fast lookups and potential future</span>
+<span class="sd">          search needs over the chat history.</span>
+<span class="sd">        - If TTL is set, message entries will automatically expire after the</span>
+<span class="sd">          specified duration.</span>
+<span class="sd">        - The session_id is used to group messages belonging to the same conversation</span>
+<span class="sd">          or user session.</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="RedisChatMessageHistory.__init__">
+<a class="viewcode-back" href="../../redis/chat_message_history/langchain_redis.chat_message_history.RedisChatMessageHistory.html#langchain_redis.chat_message_history.RedisChatMessageHistory.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">redis_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"redis://localhost:6379"</span><span class="p">,</span>
+        <span class="n">key_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"chat:"</span><span class="p">,</span>
+        <span class="n">ttl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">index_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"idx:chat_history"</span><span class="p">,</span>
+        <span class="n">redis_client</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Redis</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span> <span class="o">=</span> <span class="n">redis_client</span> <span class="ow">or</span> <span class="n">Redis</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="n">redis_url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">client_setinfo</span><span class="p">(</span><span class="s2">"LIB-NAME"</span><span class="p">,</span> <span class="n">__full_lib_name__</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">except</span> <span class="n">ResponseError</span><span class="p">:</span>
+            <span class="c1"># Fall back to a simple log echo</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="n">__full_lib_name__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session_id</span> <span class="o">=</span> <span class="n">session_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key_prefix</span> <span class="o">=</span> <span class="n">key_prefix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ttl</span> <span class="o">=</span> <span class="n">ttl</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span> <span class="o">=</span> <span class="n">index_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_index</span><span class="p">()</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_id</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ensure_index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">ft</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">ResponseError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"unknown index name"</span><span class="p">:</span>
+                <span class="n">schema</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">TagField</span><span class="p">(</span><span class="s2">"$.session_id"</span><span class="p">,</span> <span class="n">as_name</span><span class="o">=</span><span class="s2">"session_id"</span><span class="p">),</span>
+                    <span class="n">TextField</span><span class="p">(</span><span class="s2">"$.data.content"</span><span class="p">,</span> <span class="n">as_name</span><span class="o">=</span><span class="s2">"content"</span><span class="p">),</span>
+                    <span class="n">TagField</span><span class="p">(</span><span class="s2">"$.type"</span><span class="p">,</span> <span class="n">as_name</span><span class="o">=</span><span class="s2">"type"</span><span class="p">),</span>
+                    <span class="n">NumericField</span><span class="p">(</span><span class="s2">"$.timestamp"</span><span class="p">,</span> <span class="n">as_name</span><span class="o">=</span><span class="s2">"timestamp"</span><span class="p">),</span>
+                <span class="p">)</span>
+                <span class="n">definition</span> <span class="o">=</span> <span class="n">IndexDefinition</span><span class="p">(</span>
+                    <span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">key_prefix</span><span class="p">],</span> <span class="n">index_type</span><span class="o">=</span><span class="n">IndexType</span><span class="o">.</span><span class="n">JSON</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">ft</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span><span class="o">.</span><span class="n">create_index</span><span class="p">(</span>
+                    <span class="n">schema</span><span class="p">,</span> <span class="n">definition</span><span class="o">=</span><span class="n">definition</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">messages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseMessage</span><span class="p">]:</span>  <span class="c1"># type: ignore</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Query</span><span class="p">(</span><span class="sa">f</span><span class="s2">"@session_id:</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="se">}}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"timestamp"</span><span class="p">,</span> <span class="n">asc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">paging</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">ft</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">messages_from_dict</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"type"</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">json</span><span class="p">)[</span><span class="s2">"type"</span><span class="p">],</span>
+                    <span class="s2">"data"</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">json</span><span class="p">)[</span><span class="s2">"data"</span><span class="p">],</span>
+                <span class="p">}</span>
+                <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">docs</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="RedisChatMessageHistory.add_message">
+<a class="viewcode-back" href="../../redis/chat_message_history/langchain_redis.chat_message_history.RedisChatMessageHistory.html#langchain_redis.chat_message_history.RedisChatMessageHistory.add_message">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">BaseMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Add a message to the chat history.</span>
+
+<span class="sd">        This method adds a new message to the Redis store for the current session.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            message (BaseMessage): The message to add to the history. This should be an</span>
+<span class="sd">                                   instance of a class derived from BaseMessage, such as</span>
+<span class="sd">                                   HumanMessage, AIMessage, or SystemMessage.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from langchain_redis import RedisChatMessageHistory</span>
+<span class="sd">                from langchain_core.messages import HumanMessage, AIMessage</span>
+
+<span class="sd">                history = RedisChatMessageHistory(</span>
+<span class="sd">                    session_id="user123",</span>
+<span class="sd">                    redis_url="redis://localhost:6379",</span>
+<span class="sd">                    ttl=3600  # optional: set TTL to 1 hour</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Add a human message</span>
+<span class="sd">                history.add_message(HumanMessage(content="Hello, AI!"))</span>
+
+<span class="sd">                # Add an AI message</span>
+<span class="sd">                history.add_message(</span>
+<span class="sd">                  AIMessage(content="Hello! How can I assist you today?")</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Verify messages were added</span>
+<span class="sd">                print(f"Number of messages: {len(history.messages)}")</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - Each message is stored as a separate entry in Redis, associated</span>
+<span class="sd">              with the current session_id.</span>
+<span class="sd">            - Messages are stored using Redis JSON capabilities for efficient storage</span>
+<span class="sd">              and retrieval.</span>
+<span class="sd">            - If a TTL (Time To Live) was specified when initializing the history,</span>
+<span class="sd">              it will be applied to each message.</span>
+<span class="sd">            - The message's content, type, and any additional data (like timestamp)</span>
+<span class="sd">              are stored.</span>
+<span class="sd">            - This method is thread-safe and can be used in concurrent environments.</span>
+<span class="sd">            - The Redis search index is automatically updated to include the new</span>
+<span class="sd">              message, enabling future searches.</span>
+<span class="sd">            - Large message contents may impact performance and storage usage.</span>
+<span class="sd">              Consider implementing size limits if dealing with potentially</span>
+<span class="sd">              large messages.</span>
+<span class="sd">        """</span>
+        <span class="n">data_to_store</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+            <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"content"</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="s2">"additional_kwargs"</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">additional_kwargs</span><span class="p">,</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">"session_id"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="p">,</span>
+            <span class="s2">"timestamp"</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span>
+        <span class="p">}</span>
+
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">key_prefix</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">data_to_store</span><span class="p">[</span><span class="s1">'timestamp'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Path</span><span class="o">.</span><span class="n">root_path</span><span class="p">(),</span> <span class="n">data_to_store</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttl</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">expire</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttl</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RedisChatMessageHistory.clear">
+<a class="viewcode-back" href="../../redis/chat_message_history/langchain_redis.chat_message_history.RedisChatMessageHistory.html#langchain_redis.chat_message_history.RedisChatMessageHistory.clear">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Clear all messages from the chat history for the current session.</span>
+
+<span class="sd">        This method removes all messages associated with the current session_id from</span>
+<span class="sd">        the Redis store.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from langchain_redis import RedisChatMessageHistory</span>
+<span class="sd">                from langchain_core.messages import HumanMessage, AIMessage</span>
+
+<span class="sd">                history = RedisChatMessageHistory(session_id="user123", redis_url="redis://localhost:6379")</span>
+
+<span class="sd">                # Add some messages</span>
+<span class="sd">                history.add_message(HumanMessage(content="Hello, AI!"))</span>
+<span class="sd">                history.add_message(AIMessage(content="Hello, human!"))</span>
+
+<span class="sd">                # Clear the history</span>
+<span class="sd">                history.clear()</span>
+
+<span class="sd">                # Verify that the history is empty</span>
+<span class="sd">                assert len(history.messages) == 0</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - This method only clears messages for the current session_id.</span>
+<span class="sd">            - It uses a Redis search query to find all relevant messages and then</span>
+<span class="sd">              deletes them.</span>
+<span class="sd">            - The operation is atomic - either all messages are deleted, or none are.</span>
+<span class="sd">            - After clearing, the Redis search index is still maintained, allowing</span>
+<span class="sd">              for immediate use of the same session_id for new messages if needed.</span>
+<span class="sd">            - This operation is irreversible. Make sure you want to remove all messages</span>
+<span class="sd">              before calling this method.</span>
+<span class="sd">        """</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="sa">f</span><span class="s2">"@session_id:</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="se">}}</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">paging</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">ft</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">docs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RedisChatMessageHistory.search_messages">
+<a class="viewcode-back" href="../../redis/chat_message_history/langchain_redis.chat_message_history.RedisChatMessageHistory.html#langchain_redis.chat_message_history.RedisChatMessageHistory.search_messages">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">"""Search for messages in the chat history that match the given query.</span>
+
+<span class="sd">        This method performs a full-text search on the content of messages in the</span>
+<span class="sd">        current session.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            query (str): The search query string to match against message content.</span>
+<span class="sd">            limit (int, optional): The maximum number of results to return.</span>
+<span class="sd">            Defaults to 10.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[Dict[str, Any]]: A list of dictionaries, each representing a</span>
+<span class="sd">                                  matching message.</span>
+<span class="sd">            Each dictionary contains the message content and metadata.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from langchain_redis import RedisChatMessageHistory</span>
+<span class="sd">                from langchain_core.messages import HumanMessage, AIMessage</span>
+
+<span class="sd">                history = RedisChatMessageHistory(session_id="user123", redis_url="redis://localhost:6379")</span>
+
+<span class="sd">                # Add some messages</span>
+<span class="sd">                history.add_message(</span>
+<span class="sd">                  HumanMessage(content="Tell me about Machine Learning")</span>
+<span class="sd">                )</span>
+<span class="sd">                history.add_message(</span>
+<span class="sd">                  AIMessage(content="Machine Learning is a subset of AI...")</span>
+<span class="sd">                )</span>
+<span class="sd">                history.add_message(</span>
+<span class="sd">                  HumanMessage(content="What are neural networks?")</span>
+<span class="sd">                )</span>
+<span class="sd">                history.add_message(</span>
+<span class="sd">                  AIMessage(</span>
+<span class="sd">                    content="Neural networks are a key component of deep learning..."</span>
+<span class="sd">                  )</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Search for messages containing "learning"</span>
+<span class="sd">                results = history.search_messages("learning", limit=5)</span>
+
+<span class="sd">                for result in results:</span>
+<span class="sd">                    print(f"Content: {result['content']}")</span>
+<span class="sd">                    print(f"Type: {result['type']}")</span>
+<span class="sd">                    print("---")</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - The search is performed using the Redis search capabilities, which allows</span>
+<span class="sd">              for efficient full-text search.</span>
+<span class="sd">            - The search is case-insensitive and uses Redis' default tokenization</span>
+<span class="sd">              and stemming.</span>
+<span class="sd">            - Only messages from the current session (as defined by session_id)</span>
+<span class="sd">              are searched.</span>
+<span class="sd">            - The returned dictionaries include all stored fields, which typically</span>
+<span class="sd">              include 'content', 'type', and any additional metadata stored</span>
+<span class="sd">              with the message.</span>
+<span class="sd">            - This method is useful for quickly finding relevant parts of a</span>
+<span class="sd">              conversation without having to iterate through all messages.</span>
+<span class="sd">        """</span>
+        <span class="n">search_query</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Query</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(@session_id:</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="se">}}</span><span class="s2">) (@content:</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"timestamp"</span><span class="p">,</span> <span class="n">asc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">paging</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">ft</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search_query</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">json</span><span class="p">)[</span><span class="s2">"data"</span><span class="p">]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">docs</span><span class="p">]</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="sa">f</span><span class="s2">"@session_id:</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="se">}}</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">no_content</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span><span class="o">.</span><span class="n">ft</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">total</span></div>
+
+</pre></div>
+</article>
+</div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2023, LangChain Inc.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
