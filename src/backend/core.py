@@ -20,6 +20,8 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains.retrieval import create_retrieval_chain
 from langchain.chains.history_aware_retriever import create_history_aware_retriever
 
+from src.logging import logger
+
 
 warnings.filterwarnings("ignore")
 
@@ -68,6 +70,7 @@ class VectorStorePinecone:
         :return: instance of the HuggingFaceEmbeddings model
         :rtype: HuggingFaceEmbeddings
         """
+        logger.info(f"Loading embedding model {_model_name}...")
         return HuggingFaceEmbeddings(model_name=_model_name)
 
     @staticmethod
@@ -88,6 +91,7 @@ class VectorStorePinecone:
         :return: instance of a Pinecone index
         :rtype: Index
         """
+        logger.info(f"Loading Pinecone index {_index_name}...")
         pc = Pinecone(
             api_key=_api_key,
             ssl_verify=False,
@@ -98,42 +102,54 @@ class VectorStorePinecone:
         self,
         query: str,
         search: Literal["similarity", "mmr"] = "similarity",
+        top_k: int = 5,
     ) -> tuple[list[Document], set[str]]:
         """
         Retrieve relevant documents based on the search type.
 
         :param query: user's input query
+        :type query: str
         :param search: search method (similarity or max marginal relevance)
+        :type search: Literal["similarity", "mmr"]
+        :param top_k: number of documents to retrieve, defaults to 5
+        :type top_k: int, optional
         :return: list of retrieved documents with set of unique sources
         :rtype: tuple[list[Document], set[str]]
         """
         if search == "similarity":
-            documents = self.vectorstore.similarity_search(query=query, k=5)
+            logger.info("Retrieving documents with similarity search...")
+            documents = self.vectorstore.similarity_search(query=query, k=top_k)
         elif search == "mmr":
+            logger.info("Retrieving documents with max marginal relevance search...")
             documents = self.vectorstore.max_marginal_relevance_search(
-                query=query, k=5, fetch_k=20, lambda_mult=0.1
+                query=query, k=top_k, fetch_k=(top_k * 3), lambda_mult=0.5
             )
         sources = set(doc.metadata["source"] for doc in documents)
+        logger.info(f"Retrieved the following context {'\n\n'.join([document.page_content for document in documents])}")
         return documents, sources
 
 
 class LLMModel:
     def __init__(
         self,
-        model: str = "mistral",
+        model_name: str,
+        temperature: float,
     ) -> None:
         """
         Constructor of the LLMModel class.
 
-        :param model: name of the LLM (from Ollama), defaults to "mistral"
-        :type model: str, optional
+        :param model_name: name of the LLM (from Ollama)
+        :type model_name: str
+        :param temperature: temperature of the LLM
+        :type temperature: float
         """
-        self.llm = self.get_llm(model)
+        self.llm = self.get_llm(model_name, temperature)
 
     @staticmethod
     @st.cache_resource(show_spinner=False)
     def get_llm(
         _model: str,
+        _temperature: float,
     ) -> ChatOllama:
         """
         Static method to get an OllamaChat model.
@@ -142,12 +158,15 @@ class LLMModel:
 
         :param _model: name of the LLM (Ollama) model
         :type _model: str
+        :param _temperature: temperature of the LLM, defaults to 0
+        :type _temperature: float, optional
         :return: instance of a ChatOllama model
         :rtype: ChatOllama
         """
+        logger.info(f"Loading LLM {_model}...")
         return ChatOllama(
             model=_model,
-            temperature=0,
+            temperature=_temperature,
         )
 
 
@@ -205,6 +224,7 @@ class RAGChain:
         :param llm: instance of a ChatOllama model
         :type llm: ChatOllama
         """
+        logger.info("Building RAG chain...")
         rag_chain = self.prompt | llm | StrOutputParser()
         return rag_chain.stream(
             input={"question": query, "context": self.format_docs(documents)}
