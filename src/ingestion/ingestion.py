@@ -11,30 +11,38 @@ from pinecone import Pinecone
 import os
 import warnings
 import logging
+
 warnings.filterwarnings("ignore")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-MODEL_NAME = "thenlper/gte-base" # bi-encoder model for embeddings generation
+MODEL_NAME = "thenlper/gte-base"  # bi-encoder model for embeddings generation
 
 load_dotenv("local/.env")
 
 PATHS = [
     {
-        "name": "langchain-api", # scraped LangChain API docs (local folder path)
+        "name": "langchain-api",  # scraped LangChain API docs (local folder path)
         "link_specs": {
-            "prefix": {"old": "langchain-api/", "new": "https://python.langchain.com/api_reference/"},
+            "prefix": {
+                "old": "langchain-api/",
+                "new": "https://python.langchain.com/api_reference/",
+            },
             "suffix": None,
         },
     },
     {
-        "name": "langchain-docs", # scraped LangChain docs (e.g., 'how to', 'concepts', 'tutorials')
+        "name": "langchain-docs",  # scraped LangChain docs (e.g., 'how to', 'concepts', 'tutorials')
         "link_specs": {
-            "prefix": {"old": "langchain-docs/", "new": "https://python.langchain.com/"},
+            "prefix": {
+                "old": "langchain-docs/",
+                "new": "https://python.langchain.com/",
+            },
             "suffix": {"old": "index.html", "new": ""},
-        }
-    }
+        },
+    },
 ]
+
 
 def source_to_link(
     source: str,
@@ -43,7 +51,7 @@ def source_to_link(
 ) -> str:
     """
     Convert a source string to a link.
-    
+
     :param source: source of the file from local FS
     :type source: str
     :param prefix: prefix to add to the source
@@ -59,13 +67,14 @@ def source_to_link(
         source = source.replace(suffix.get("old"), suffix.get("new"))
     return source
 
+
 def ingest_docs(
     path: str,
     link_specs: dict[str, dict[str, str] | None],
 ) -> None:
     """
     Main function to ingest scraped LangChain docs into the Pinecone vector store.
-    
+
     :param path: path to the local folder where the scraped LangChain docs are stored
     :type path: str
     :param link_specs: specs to convert the source of the file from local FS to the link on the original web page
@@ -80,14 +89,14 @@ def ingest_docs(
     )
     raw_docs = loader.load()
     logger.info(f"loaded {len(raw_docs)} documents")
-    
+
     logger.info("Splitting documents via recursive character text splitter...")
     splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
         encoding_name="cl100k_base",
         chunk_size=1_000,
         chunk_overlap=50,
     )
-    
+
     documents = splitter.split_documents(raw_docs)
     logger.info("Updating documents...")
     for doc in documents:
@@ -96,9 +105,9 @@ def ingest_docs(
             **link_specs,
         )
         doc.metadata.update({"source": source_url})
-        
+
     logger.info(f"Index {len(documents)} documents")
-    
+
     logger.info("Initializing Pinecone...")
     pc = Pinecone(
         api_key=os.getenv("PINECONE_API_KEY"),
@@ -120,6 +129,8 @@ def ingest_docs(
 if __name__ == "__main__":
     for path in PATHS:
         ingest_docs(
-            path=path.get("name"), # local folder to ingest
-            link_specs=path.get("link_specs"), # link specs to convert the local folder path to a link
+            path=path.get("name"),  # local folder to ingest
+            link_specs=path.get(
+                "link_specs"
+            ),  # link specs to convert the local folder path to a link
         )
