@@ -1,0 +1,1619 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-9B66JQQH2F"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9B66JQQH2F');
+    </script>
+<title>langchain_sqlserver.vectorstores — 🦜🔗 LangChain  documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/autodoc_pydantic.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=488f4e83" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=3b5cce75"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '_modules/langchain_sqlserver/vectorstores';</script>
+<link href="../../_static/favicon.png" rel="icon"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+<meta content="Feb 07, 2025" name="docbuild:last-update"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-light" src="../../_static/wordmark-api.svg"/>
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-dark pst-js-only" src="../../_static/wordmark-api-dark.svg"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar hide-on-wide" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Module code</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">langchain_sqlserver.vectorstores</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<h1>Source code for langchain_sqlserver.vectorstores</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""This is the SQL Server module.</span>
+
+<span class="sd">This module provides the SQLServer_VectorStore class for managing</span>
+<span class="sd">vectorstores in SQL Server.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">Iterable</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">MutableMapping</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">Type</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAzureCredential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.documents</span><span class="w"> </span><span class="kn">import</span> <span class="n">Document</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.embeddings</span><span class="w"> </span><span class="kn">import</span> <span class="n">Embeddings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.vectorstores</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorStore</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.vectorstores.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">maximal_marginal_relevance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Column</span><span class="p">,</span>
+    <span class="n">ColumnElement</span><span class="p">,</span>
+    <span class="n">Dialect</span><span class="p">,</span>
+    <span class="n">Index</span><span class="p">,</span>
+    <span class="n">Numeric</span><span class="p">,</span>
+    <span class="n">PrimaryKeyConstraint</span><span class="p">,</span>
+    <span class="n">SQLColumnExpression</span><span class="p">,</span>
+    <span class="n">Uuid</span><span class="p">,</span>
+    <span class="n">asc</span><span class="p">,</span>
+    <span class="n">bindparam</span><span class="p">,</span>
+    <span class="n">cast</span><span class="p">,</span>
+    <span class="n">create_engine</span><span class="p">,</span>
+    <span class="n">event</span><span class="p">,</span>
+    <span class="n">func</span><span class="p">,</span>
+    <span class="n">insert</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">,</span>
+    <span class="n">select</span><span class="p">,</span>
+    <span class="n">text</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.dialects.mssql</span><span class="w"> </span><span class="kn">import</span> <span class="n">JSON</span><span class="p">,</span> <span class="n">NVARCHAR</span><span class="p">,</span> <span class="n">VARCHAR</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.dialects.mssql.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">MSTypeCompiler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">URL</span><span class="p">,</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Engine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.exc</span><span class="w"> </span><span class="kn">import</span> <span class="n">DBAPIError</span><span class="p">,</span> <span class="n">ProgrammingError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.ext.compiler</span><span class="w"> </span><span class="kn">import</span> <span class="n">compiles</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span><span class="p">,</span> <span class="n">declarative_base</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.pool</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConnectionPoolEntry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">operators</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserDefinedType</span>
+
+<span class="n">COMPARISONS_TO_NATIVE</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ColumnElement</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="n">ColumnElement</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"$eq"</span><span class="p">:</span> <span class="n">operators</span><span class="o">.</span><span class="n">eq</span><span class="p">,</span>
+    <span class="s2">"$ne"</span><span class="p">:</span> <span class="n">operators</span><span class="o">.</span><span class="n">ne</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">NUMERIC_OPERATORS</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ColumnElement</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="n">ColumnElement</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"$lt"</span><span class="p">:</span> <span class="n">operators</span><span class="o">.</span><span class="n">lt</span><span class="p">,</span>
+    <span class="s2">"$lte"</span><span class="p">:</span> <span class="n">operators</span><span class="o">.</span><span class="n">le</span><span class="p">,</span>
+    <span class="s2">"$gt"</span><span class="p">:</span> <span class="n">operators</span><span class="o">.</span><span class="n">gt</span><span class="p">,</span>
+    <span class="s2">"$gte"</span><span class="p">:</span> <span class="n">operators</span><span class="o">.</span><span class="n">ge</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">SPECIAL_CASED_OPERATORS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"$in"</span><span class="p">,</span>
+    <span class="s2">"$nin"</span><span class="p">,</span>
+    <span class="s2">"$like"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">BETWEEN_OPERATOR</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"$between"</span><span class="p">}</span>
+
+<span class="n">LOGICAL_OPERATORS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"$and"</span><span class="p">,</span> <span class="s2">"$or"</span><span class="p">}</span>
+
+<span class="n">SUPPORTED_OPERATORS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="nb">set</span><span class="p">(</span><span class="n">COMPARISONS_TO_NATIVE</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">NUMERIC_OPERATORS</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">SPECIAL_CASED_OPERATORS</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">BETWEEN_OPERATOR</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">LOGICAL_OPERATORS</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="DistanceStrategy">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.DistanceStrategy.html#langchain_sqlserver.vectorstores.DistanceStrategy">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DistanceStrategy</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Distance Strategy class for SQLServer_VectorStore.</span>
+
+<span class="sd">    Enumerator of the distance strategies for calculating distances</span>
+<span class="sd">    between vectors.</span>
+<span class="sd">    """</span>
+
+    <span class="n">EUCLIDEAN</span> <span class="o">=</span> <span class="s2">"euclidean"</span>
+    <span class="n">COSINE</span> <span class="o">=</span> <span class="s2">"cosine"</span>
+    <span class="n">DOT</span> <span class="o">=</span> <span class="s2">"dot"</span></div>
+
+
+
+<div class="viewcode-block" id="VectorType">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.VectorType.html#langchain_sqlserver.vectorstores.VectorType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">VectorType</span><span class="p">(</span><span class="n">UserDefinedType</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""VectorType - A custom type definition."""</span>
+
+    <span class="n">cache_ok</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="VectorType.__init__">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.VectorType.html#langchain_sqlserver.vectorstores.VectorType.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""__init__ for VectorType class."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">length</span></div>
+
+
+<div class="viewcode-block" id="VectorType.get_col_spec">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.VectorType.html#langchain_sqlserver.vectorstores.VectorType.get_col_spec">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_col_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""get_col_spec function for VectorType class."""</span>
+        <span class="k">return</span> <span class="s2">"vector(</span><span class="si">%s</span><span class="s2">)"</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span></div>
+
+
+<div class="viewcode-block" id="VectorType.bind_processor">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.VectorType.html#langchain_sqlserver.vectorstores.VectorType.bind_processor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">bind_processor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialect</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""bind_processor function for VectorType class."""</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+
+        <span class="k">return</span> <span class="n">process</span></div>
+
+
+<div class="viewcode-block" id="VectorType.result_processor">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.VectorType.html#langchain_sqlserver.vectorstores.VectorType.result_processor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">result_processor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialect</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">coltype</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""result_processor function for VectorType class."""</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+
+        <span class="k">return</span> <span class="n">process</span></div>
+</div>
+
+
+
+<span class="c1"># String Constants</span>
+<span class="c1">#</span>
+<span class="n">AZURE_TOKEN_URL</span> <span class="o">=</span> <span class="s2">"https://database.windows.net/.default"</span>  <span class="c1"># Token URL for Azure DBs.</span>
+<span class="n">DISTANCE</span> <span class="o">=</span> <span class="s2">"distance"</span>
+<span class="n">DEFAULT_DISTANCE_STRATEGY</span> <span class="o">=</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">COSINE</span>
+<span class="n">DEFAULT_TABLE_NAME</span> <span class="o">=</span> <span class="s2">"sqlserver_vectorstore"</span>
+<span class="n">DISTANCE_STRATEGY</span> <span class="o">=</span> <span class="s2">"distancestrategy"</span>
+<span class="n">EMBEDDING</span> <span class="o">=</span> <span class="s2">"embedding"</span>
+<span class="n">EMBEDDING_LENGTH</span> <span class="o">=</span> <span class="s2">"embedding_length"</span>
+<span class="n">EMBEDDING_VALUES</span> <span class="o">=</span> <span class="s2">"embeddingvalues"</span>
+<span class="n">EMPTY_IDS_ERROR_MESSAGE</span> <span class="o">=</span> <span class="s2">"Empty list of ids provided"</span>
+<span class="n">EXTRA_PARAMS</span> <span class="o">=</span> <span class="s2">";Trusted_Connection=Yes"</span>
+<span class="n">INVALID_IDS_ERROR_MESSAGE</span> <span class="o">=</span> <span class="s2">"Invalid list of ids provided"</span>
+<span class="n">INVALID_INPUT_ERROR_MESSAGE</span> <span class="o">=</span> <span class="s2">"Input is not valid."</span>
+<span class="n">INVALID_FILTER_INPUT_EXPECTED_DICT</span> <span class="o">=</span> <span class="s2">"""Invalid filter condition. Expected a dictionary</span>
+<span class="s2">but got an empty dictionary"""</span>
+<span class="n">INVALID_FILTER_INPUT_EXPECTED_AND_OR</span> <span class="o">=</span> <span class="s2">"""Invalid filter condition.</span>
+<span class="s2">Expected $and or $or but got: </span><span class="si">{}</span><span class="s2">"""</span>
+
+<span class="n">SQL_COPT_SS_ACCESS_TOKEN</span> <span class="o">=</span> <span class="mi">1256</span>  <span class="c1"># Connection option defined by microsoft in msodbcsql.h</span>
+
+<span class="c1"># Query Constants</span>
+<span class="c1">#</span>
+<span class="n">JSON_TO_VECTOR_QUERY</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"cast (:</span><span class="si">{</span><span class="n">EMBEDDING_VALUES</span><span class="si">}</span><span class="s2"> as vector(:</span><span class="si">{</span><span class="n">EMBEDDING_LENGTH</span><span class="si">}</span><span class="s2">))"</span>
+<span class="n">SERVER_JSON_CHECK_QUERY</span> <span class="o">=</span> <span class="s2">"select name from sys.types where system_type_id = 244"</span>
+<span class="n">VECTOR_DISTANCE_QUERY</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
+<span class="s2">VECTOR_DISTANCE(:</span><span class="si">{</span><span class="n">DISTANCE_STRATEGY</span><span class="si">}</span><span class="s2">,</span>
+<span class="s2">cast (:</span><span class="si">{</span><span class="n">EMBEDDING</span><span class="si">}</span><span class="s2"> as vector(:</span><span class="si">{</span><span class="n">EMBEDDING_LENGTH</span><span class="si">}</span><span class="s2">)), embeddings)"""</span>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SQLServer_VectorStore</span><span class="p">(</span><span class="n">VectorStore</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""SQL Server Vector Store.</span>
+
+<span class="sd">    This class provides a vector store interface for adding texts and performing</span>
+<span class="sd">        similarity searches on the texts in SQL Server.</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="SQLServer_VectorStore.__init__">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">connection</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Connection</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">connection_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">db_schema</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">distance_strategy</span><span class="p">:</span> <span class="n">DistanceStrategy</span> <span class="o">=</span> <span class="n">DEFAULT_DISTANCE_STRATEGY</span><span class="p">,</span>
+        <span class="n">embedding_function</span><span class="p">:</span> <span class="n">Embeddings</span><span class="p">,</span>
+        <span class="n">embedding_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">relevance_score_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_TABLE_NAME</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Initialize the SQL Server vector store.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            connection: Optional SQLServer connection.</span>
+<span class="sd">            connection_string: SQLServer connection string.</span>
+<span class="sd">                If the connection string does not contain a username &amp; password</span>
+<span class="sd">                or `TrustedConnection=yes`, Entra ID authentication is used.</span>
+<span class="sd">                SQL Server ODBC connection string can be retrieved from the</span>
+<span class="sd">                `Connection strings` pane of the database in Azure portal.</span>
+<span class="sd">                Sample connection string format:</span>
+<span class="sd">                - "Driver=&lt;drivername&gt;;Server=&lt;servername&gt;;Database=&lt;dbname&gt;;</span>
+<span class="sd">                Uid=&lt;username&gt;;Pwd=&lt;password&gt;;TrustServerCertificate=no;"</span>
+<span class="sd">                - "mssql+pyodbc://username:password@servername/dbname?other_params"</span>
+<span class="sd">            db_schema: The schema in which the vector store will be created.</span>
+<span class="sd">                This schema must exist and the user must have permissions to the schema.</span>
+<span class="sd">            distance_strategy: The distance strategy to use for comparing embeddings.</span>
+<span class="sd">                Default value is COSINE. Available options are:</span>
+<span class="sd">                - COSINE</span>
+<span class="sd">                - DOT</span>
+<span class="sd">                - EUCLIDEAN</span>
+<span class="sd">            embedding_function: Any embedding function implementing</span>
+<span class="sd">                `langchain.embeddings.base.Embeddings` interface.</span>
+<span class="sd">            embedding_length: The length (dimension) of the vectors to be stored in the</span>
+<span class="sd">                table.</span>
+<span class="sd">                Note that only vectors of same size can be added to the vector store.</span>
+<span class="sd">            relevance_score_fn: Relevance score funtion to be used.</span>
+<span class="sd">                Optional param, defaults to None.</span>
+<span class="sd">            table_name: The name of the table to use for storing embeddings.</span>
+<span class="sd">                Default value is `sqlserver_vectorstore`.</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_connection_url</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span> <span class="o">=</span> <span class="n">distance_strategy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_function</span> <span class="o">=</span> <span class="n">embedding_function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_length</span> <span class="o">=</span> <span class="n">embedding_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="o">=</span> <span class="n">db_schema</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">override_relevance_score_fn</span> <span class="o">=</span> <span class="n">relevance_score_fn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table_name</span> <span class="o">=</span> <span class="n">table_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bind</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Connection</span><span class="p">,</span> <span class="n">Engine</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">connection</span> <span class="k">if</span> <span class="n">connection</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_engine</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_json_data_type</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_embedding_store</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_table_if_not_exists</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_connection_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conn_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">conn_string</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">conn_string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Connection string value is None or empty."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Connection string value cannot be None."</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">conn_string</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"mssql+pyodbc"</span><span class="p">):</span>
+            <span class="c1"># Connection string is in a format that we can parse.</span>
+            <span class="c1">#</span>
+            <span class="k">return</span> <span class="n">conn_string</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">conn_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">";"</span><span class="p">)</span>
+            <span class="n">arg_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s2">"="</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">:</span>
+                    <span class="c1"># Split into key value pairs by the first positioned `=` found.</span>
+                    <span class="c1"># Key-Value pairs are inserted into the dictionary.</span>
+                    <span class="c1">#</span>
+                    <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"="</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">arg_dict</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="c1"># This will throw a key error if server or database keyword</span>
+            <span class="c1"># is not present in arg_dict from the connection string.</span>
+            <span class="c1">#</span>
+            <span class="n">database</span> <span class="o">=</span> <span class="n">arg_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"database"</span><span class="p">)</span>
+
+            <span class="c1"># If `server` is present in the dictionary, we split by</span>
+            <span class="c1"># `,` to obtain host and port details.</span>
+            <span class="c1">#</span>
+            <span class="n">server</span> <span class="o">=</span> <span class="n">arg_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"server"</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">server_host</span> <span class="o">=</span> <span class="n">server</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">server_port</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="c1"># Server details in SQLServer connection string from Azure portal</span>
+            <span class="c1"># might be of the form `Server=tcp:servername`. In scenarios like this,</span>
+            <span class="c1"># we remove the first part (tcp:) because `urlparse` function invoked in</span>
+            <span class="c1"># `_can_connect_with_entra_id` expects an IP address when it sees `tcp:`</span>
+            <span class="c1"># We can remove this without fear of a failure because it is omittable in</span>
+            <span class="c1"># the connection string value.</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="s2">":"</span> <span class="ow">in</span> <span class="n">server_host</span><span class="p">:</span>
+                <span class="n">server_host</span> <span class="o">=</span> <span class="n">server_host</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># Check if port is provided in server details,if true,</span>
+            <span class="c1"># cast value to int if possible.</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">server</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">server</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                <span class="n">server_port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">server</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="c1"># Args needed to be checked</span>
+            <span class="c1">#</span>
+            <span class="n">username</span> <span class="o">=</span> <span class="n">arg_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"uid"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">password</span> <span class="o">=</span> <span class="n">arg_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"pwd"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">"driver"</span> <span class="ow">in</span> <span class="n">arg_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="c1"># Extract driver value from curly braces if present.</span>
+                <span class="n">driver</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\{([^}]*)\}"</span><span class="p">,</span> <span class="n">arg_dict</span><span class="p">[</span><span class="s2">"driver"</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">driver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">arg_dict</span><span class="p">[</span><span class="s2">"driver"</span><span class="p">]</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Create connection URL for SQLAlchemy</span>
+            <span class="c1">#</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">URL</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="s2">"mssql+pyodbc"</span><span class="p">,</span>
+                <span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span>
+                <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span>
+                <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+                <span class="n">host</span><span class="o">=</span><span class="n">server_host</span><span class="p">,</span>
+                <span class="n">port</span><span class="o">=</span><span class="n">server_port</span><span class="p">,</span>
+                <span class="n">query</span><span class="o">=</span><span class="n">arg_dict</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">k</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Server, DB details were not provided in the connection string.</span><span class="se">\n</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                <span class="s2">"Server, DB details should be provided in connection string."</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"An error has occurred.</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span>
+
+        <span class="c1"># Return string version of the URL and ensure password</span>
+        <span class="c1"># passed in is not obfuscated.</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="n">url</span><span class="o">.</span><span class="n">render_as_string</span><span class="p">(</span><span class="n">hide_password</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_can_connect_with_entra_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Determine if Entra ID authentication can be used.</span>
+
+<span class="sd">        Check the components of the connection string to determine</span>
+<span class="sd">        if connection via Entra ID authentication is possible or not.</span>
+
+<span class="sd">        The connection string is of expected to be of the form:</span>
+<span class="sd">            "mssql+pyodbc://username:password@servername/dbname?other_params"</span>
+<span class="sd">        which gets parsed into -&gt; &lt;scheme&gt;://&lt;netloc&gt;/&lt;path&gt;?&lt;query&gt;</span>
+<span class="sd">        """</span>
+        <span class="n">parsed_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_string</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">parsed_url</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Unable to parse connection string."</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">invalid_keywords</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">"trusted_connection=yes"</span><span class="p">,</span>
+            <span class="s2">"trustedconnection=yes"</span><span class="p">,</span>
+            <span class="s2">"authentication"</span><span class="p">,</span>
+            <span class="s2">"integrated security"</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">parsed_url</span><span class="o">.</span><span class="n">username</span>
+            <span class="ow">or</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">password</span>
+            <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">keyword</span> <span class="ow">in</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">invalid_keywords</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Engine</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_can_connect_with_entra_id</span><span class="p">():</span>
+            <span class="c1"># Use Entra ID auth. Listen for a connection event</span>
+            <span class="c1"># when `_create_engine` function from this class is called.</span>
+            <span class="c1">#</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">Engine</span><span class="p">,</span> <span class="s2">"do_connect"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_provide_token</span><span class="p">,</span> <span class="n">once</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Using Entra ID Authentication."</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_string</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_table_if_not_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Creating table </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bind</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                    <span class="n">session</span><span class="o">.</span><span class="n">get_bind</span><span class="p">(),</span> <span class="n">checkfirst</span><span class="o">=</span><span class="kc">True</span>
+                <span class="p">)</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">ProgrammingError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Create table </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> failed."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_embedding_store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">schema</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="n">DynamicBase</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">(</span><span class="n">class_registry</span><span class="o">=</span><span class="nb">dict</span><span class="p">())</span>  <span class="c1"># type: Any</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_length</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_length</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"`embedding_length` value is not valid."</span><span class="p">)</span>
+
+        <span class="k">class</span><span class="w"> </span><span class="nc">EmbeddingStore</span><span class="p">(</span><span class="n">DynamicBase</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">"""This is the base model for SQL vector store."""</span>
+
+            <span class="n">__tablename__</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="n">__table_args__</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">PrimaryKeyConstraint</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">mssql_clustered</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+                <span class="n">Index</span><span class="p">(</span><span class="s2">"idx_custom_id"</span><span class="p">,</span> <span class="s2">"custom_id"</span><span class="p">,</span> <span class="n">mssql_clustered</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="p">{</span><span class="s2">"schema"</span><span class="p">:</span> <span class="n">schema</span><span class="p">},</span>
+            <span class="p">)</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Uuid</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
+            <span class="n">custom_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span>
+                <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>  <span class="c1"># column for user defined ids.</span>
+            <span class="n">content_metadata</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">JSON</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">NVARCHAR</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># defaults to NVARCHAR(MAX)</span>
+            <span class="n">embeddings</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">VectorType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding_length</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">EmbeddingStore</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_prepare_json_data_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Prepare for JSON data type usage.</span>
+
+<span class="sd">        Check if the server has the JSON data type available. If it does,</span>
+<span class="sd">        we compile JSON data type as JSON instead of NVARCHAR(max) used by</span>
+<span class="sd">        sqlalchemy. If it doesn't, this defaults to NVARCHAR(max) as specified</span>
+<span class="sd">        by sqlalchemy.</span>
+<span class="sd">        """</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bind</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">SERVER_JSON_CHECK_QUERY</span><span class="p">))</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+                    <span class="nd">@compiles</span><span class="p">(</span><span class="n">JSON</span><span class="p">,</span> <span class="s2">"mssql"</span><span class="p">)</span>
+                    <span class="k">def</span><span class="w"> </span><span class="nf">compile_json</span><span class="p">(</span>
+                        <span class="n">element</span><span class="p">:</span> <span class="n">JSON</span><span class="p">,</span> <span class="n">compiler</span><span class="p">:</span> <span class="n">MSTypeCompiler</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">:</span> <span class="n">Any</span>
+                    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+                        <span class="c1"># return JSON when JSON data type is specified in this class.</span>
+                        <span class="k">return</span> <span class="n">result</span>  <span class="c1"># json data type name in sql server</span>
+
+        <span class="k">except</span> <span class="n">ProgrammingError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unable to get data types.</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">embeddings</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Embeddings</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""`embeddings` property for SQLServer_VectorStore class."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_function</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_strategy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""distance_strategy property for SQLServer_VectorStore class."""</span>
+        <span class="c1"># Value of distance strategy passed in should be one of the supported values.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span><span class="p">,</span> <span class="n">DistanceStrategy</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span><span class="o">.</span><span class="n">value</span>
+
+        <span class="c1"># Match string value with appropriate enum value, if supported.</span>
+        <span class="n">distance_strategy_lower</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">distance_strategy_lower</span> <span class="o">==</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">EUCLIDEAN</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">EUCLIDEAN</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">elif</span> <span class="n">distance_strategy_lower</span> <span class="o">==</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">COSINE</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">COSINE</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">elif</span> <span class="n">distance_strategy_lower</span> <span class="o">==</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">DOT</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">DOT</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span><span class="si">}</span><span class="s2"> is not supported."</span><span class="p">)</span>
+
+    <span class="nd">@distance_strategy</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_strategy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">DistanceStrategy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="SQLServer_VectorStore.from_texts">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.from_texts">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_texts</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">SQLServer_VectorStore</span><span class="p">],</span>
+        <span class="n">texts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">embedding</span><span class="p">:</span> <span class="n">Embeddings</span><span class="p">,</span>
+        <span class="n">metadatas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">connection_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(),</span>
+        <span class="n">embedding_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_TABLE_NAME</span><span class="p">,</span>
+        <span class="n">db_schema</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">distance_strategy</span><span class="p">:</span> <span class="n">DistanceStrategy</span> <span class="o">=</span> <span class="n">DEFAULT_DISTANCE_STRATEGY</span><span class="p">,</span>
+        <span class="n">ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SQLServer_VectorStore</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create a SQL Server vectorStore initialized from texts and embeddings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            texts: Iterable of strings to add into the vectorstore.</span>
+<span class="sd">            embedding: Any embedding function implementing</span>
+<span class="sd">                `langchain.embeddings.base.Embeddings` interface.</span>
+<span class="sd">            metadatas: Optional list of metadatas (python dicts) associated</span>
+<span class="sd">                with the input texts.</span>
+<span class="sd">            connection_string: SQLServer connection string.</span>
+<span class="sd">                If the connection string does not contain a username &amp; password</span>
+<span class="sd">                or `TrustedConnection=yes`, Entra ID authentication is used.</span>
+<span class="sd">                SQL Server ODBC connection string can be retrieved from the</span>
+<span class="sd">                `Connection strings` pane of the database in Azure portal.</span>
+<span class="sd">                Sample connection string format:</span>
+<span class="sd">                - "Driver=&lt;drivername&gt;;Server=&lt;servername&gt;;Database=&lt;dbname&gt;;</span>
+<span class="sd">                Uid=&lt;username&gt;;Pwd=&lt;password&gt;;TrustServerCertificate=no;"</span>
+<span class="sd">                - "mssql+pyodbc://username:password@servername/dbname?other_params"</span>
+<span class="sd">            embedding_length: The length (dimension) of the vectors to be stored in the</span>
+<span class="sd">                table.</span>
+<span class="sd">                Note that only vectors of same size can be added to the vector store.</span>
+<span class="sd">            table_name: The name of the table to use for storing embeddings.</span>
+<span class="sd">            db_schema: The schema in which the vector store will be created.</span>
+<span class="sd">                This schema must exist and the user must have permissions to the schema.</span>
+<span class="sd">            distance_strategy: The distance strategy to use for comparing embeddings.</span>
+<span class="sd">                Default value is COSINE. Available options are:</span>
+<span class="sd">                - COSINE</span>
+<span class="sd">                - DOT</span>
+<span class="sd">                - EUCLIDEAN</span>
+<span class="sd">            ids: Optional list of IDs for the input texts.</span>
+<span class="sd">            **kwargs: vectorstore specific parameters.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            SQLServer_VectorStore: A SQL Server vectorstore.</span>
+<span class="sd">        """</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">connection_string</span><span class="o">=</span><span class="n">connection_string</span><span class="p">,</span>
+            <span class="n">db_schema</span><span class="o">=</span><span class="n">db_schema</span><span class="p">,</span>
+            <span class="n">distance_strategy</span><span class="o">=</span><span class="n">distance_strategy</span><span class="p">,</span>
+            <span class="n">embedding_function</span><span class="o">=</span><span class="n">embedding</span><span class="p">,</span>
+            <span class="n">embedding_length</span><span class="o">=</span><span class="n">embedding_length</span><span class="p">,</span>
+            <span class="n">table_name</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">store</span><span class="o">.</span><span class="n">add_texts</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">metadatas</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">store</span></div>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore.from_documents">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.from_documents">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_documents</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">SQLServer_VectorStore</span><span class="p">],</span>
+        <span class="n">documents</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">],</span>
+        <span class="n">embedding</span><span class="p">:</span> <span class="n">Embeddings</span><span class="p">,</span>
+        <span class="n">connection_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(),</span>
+        <span class="n">embedding_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_TABLE_NAME</span><span class="p">,</span>
+        <span class="n">db_schema</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">distance_strategy</span><span class="p">:</span> <span class="n">DistanceStrategy</span> <span class="o">=</span> <span class="n">DEFAULT_DISTANCE_STRATEGY</span><span class="p">,</span>
+        <span class="n">ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SQLServer_VectorStore</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create a SQL Server vectorStore initialized from texts and embeddings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            documents: Documents to add to the vectorstore.</span>
+<span class="sd">            embedding: Any embedding function implementing</span>
+<span class="sd">                `langchain.embeddings.base.Embeddings` interface.</span>
+<span class="sd">            connection_string: SQLServer connection string.</span>
+<span class="sd">                If the connection string does not contain a username &amp; password</span>
+<span class="sd">                or `TrustedConnection=yes`, Entra ID authentication is used.</span>
+<span class="sd">                SQL Server ODBC connection string can be retrieved from the</span>
+<span class="sd">                `Connection strings` pane of the database in Azure portal.</span>
+<span class="sd">                Sample connection string format:</span>
+<span class="sd">                - "Driver=&lt;drivername&gt;;Server=&lt;servername&gt;;Database=&lt;dbname&gt;;</span>
+<span class="sd">                Uid=&lt;username&gt;;Pwd=&lt;password&gt;;TrustServerCertificate=no;"</span>
+<span class="sd">                - "mssql+pyodbc://username:password@servername/dbname?other_params"</span>
+<span class="sd">            embedding_length: The length (dimension) of the vectors to be stored in the</span>
+<span class="sd">                table.</span>
+<span class="sd">                Note that only vectors of same size can be added to the vector store.</span>
+<span class="sd">            table_name: The name of the table to use for storing embeddings.</span>
+<span class="sd">                Default value is `sqlserver_vectorstore`.</span>
+<span class="sd">            db_schema: The schema in which the vector store will be created.</span>
+<span class="sd">                This schema must exist and the user must have permissions to the schema.</span>
+<span class="sd">            distance_strategy: The distance strategy to use for comparing embeddings.</span>
+<span class="sd">                Default value is COSINE. Available options are:</span>
+<span class="sd">                - COSINE</span>
+<span class="sd">                - DOT</span>
+<span class="sd">                - EUCLIDEAN</span>
+<span class="sd">            ids: Optional list of IDs for the input texts.</span>
+<span class="sd">            **kwargs: vectorstore specific parameters.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            SQLServer_VectorStore: A SQL Server vectorstore.</span>
+<span class="sd">        """</span>
+        <span class="n">texts</span><span class="p">,</span> <span class="n">metadatas</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">documents</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">Document</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">"Expected an entry of type Document, but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">)</span>
+
+            <span class="n">texts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span><span class="p">)</span>
+            <span class="n">metadatas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
+
+        <span class="n">store</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">connection_string</span><span class="o">=</span><span class="n">connection_string</span><span class="p">,</span>
+            <span class="n">db_schema</span><span class="o">=</span><span class="n">db_schema</span><span class="p">,</span>
+            <span class="n">distance_strategy</span><span class="o">=</span><span class="n">distance_strategy</span><span class="p">,</span>
+            <span class="n">embedding_function</span><span class="o">=</span><span class="n">embedding</span><span class="p">,</span>
+            <span class="n">embedding_length</span><span class="o">=</span><span class="n">embedding_length</span><span class="p">,</span>
+            <span class="n">table_name</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">store</span><span class="o">.</span><span class="n">add_texts</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">metadatas</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">store</span></div>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore.get_by_ids">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.get_by_ids">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_by_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Get documents by their IDs from the vectorstore.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ids: List of IDs to retrieve.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of Documents</span>
+<span class="sd">        """</span>
+        <span class="n">documents</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">ids</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">EMPTY_IDS_ERROR_MESSAGE</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_documents_by_ids</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">documents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">Document</span><span class="p">(</span>
+                            <span class="nb">id</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">custom_id</span><span class="p">,</span>
+                            <span class="n">page_content</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                            <span class="n">metadata</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">content_metadata</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">documents</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_documents_by_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+        <span class="n">result</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">Session</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bind</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+                <span class="n">statement</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">custom_id</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">content_metadata</span><span class="p">,</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">custom_id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">DBAPIError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_select_relevance_score_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Determine relevance score function.</span>
+
+<span class="sd">        The 'correct' relevance function</span>
+<span class="sd">        may differ depending on a few things, including:</span>
+<span class="sd">        - the distance / similarity metric used by the VectorStore</span>
+<span class="sd">        - the scale of your embeddings (OpenAI's are unit normed. Many others are not!)</span>
+<span class="sd">        - embedding dimensionality</span>
+<span class="sd">        - etc.</span>
+<span class="sd">        If no relevance function is provided in the class constructor,</span>
+<span class="sd">        selection is based on the distance strategy provided.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">override_relevance_score_fn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">override_relevance_score_fn</span>
+
+        <span class="c1"># If the relevance score function is not provided, we default to using</span>
+        <span class="c1"># the distance strategy specified by the user.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span> <span class="o">==</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">COSINE</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cosine_relevance_score_fn</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span> <span class="o">==</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">DOT</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_inner_product_relevance_score_fn</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span> <span class="o">==</span> <span class="n">DistanceStrategy</span><span class="o">.</span><span class="n">EUCLIDEAN</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_euclidean_relevance_score_fn</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">"There is no supported normalization function for"</span>
+                <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_distance_strategy</span><span class="si">}</span><span class="s2"> distance strategy."</span>
+                <span class="s2">"Consider providing relevance_score_fn to "</span>
+                <span class="s2">"SQLServer_VectorStore construction."</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="SQLServer_VectorStore.max_marginal_relevance_search">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.max_marginal_relevance_search">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">max_marginal_relevance_search</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">fetch_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">lambda_mult</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Return docs selected using the maximal marginal relevance.</span>
+
+<span class="sd">        Maximal marginal relevance optimizes for similarity to query AND diversity</span>
+<span class="sd">        among selected documents.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            query: Text to look up documents similar to.</span>
+<span class="sd">            k: Number of Documents to return. Defaults to 4.</span>
+<span class="sd">            fetch_k: Number of Documents to fetch to pass to MMR algorithm.</span>
+<span class="sd">                Default is 20.</span>
+<span class="sd">            lambda_mult: Number between 0 and 1 that determines the degree</span>
+<span class="sd">                of diversity among the results with 0 corresponding</span>
+<span class="sd">                to maximum diversity and 1 to minimum diversity.</span>
+<span class="sd">                Defaults to 0.5.</span>
+<span class="sd">            **kwargs: Arguments to pass to the search method.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of Documents selected by maximal marginal relevance.</span>
+<span class="sd">        """</span>
+        <span class="n">embedded_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_function</span><span class="o">.</span><span class="n">embed_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_marginal_relevance_search_by_vector</span><span class="p">(</span>
+            <span class="n">embedded_query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">fetch_k</span><span class="o">=</span><span class="n">fetch_k</span><span class="p">,</span> <span class="n">lambda_mult</span><span class="o">=</span><span class="n">lambda_mult</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore.max_marginal_relevance_search_by_vector">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.max_marginal_relevance_search_by_vector">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">max_marginal_relevance_search_by_vector</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">embedding</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+        <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">fetch_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">lambda_mult</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Return docs selected using the maximal marginal relevance.</span>
+
+<span class="sd">        Maximal marginal relevance optimizes for similarity to query AND diversity</span>
+<span class="sd">        among selected documents.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            embedding: Embedding to look up documents similar to.</span>
+<span class="sd">            k: Number of Documents to return. Defaults to 4.</span>
+<span class="sd">            fetch_k: Number of Documents to fetch to pass to MMR algorithm.</span>
+<span class="sd">                Default is 20.</span>
+<span class="sd">            lambda_mult: Number between 0 and 1 that determines the degree</span>
+<span class="sd">                of diversity among the results with 0 corresponding</span>
+<span class="sd">                to maximum diversity and 1 to minimum diversity.</span>
+<span class="sd">                Defaults to 0.5.</span>
+<span class="sd">            **kwargs: Arguments to pass to the search method.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of Documents selected by maximal marginal relevance.</span>
+<span class="sd">        """</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_store</span><span class="p">(</span>
+            <span class="n">embedding</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">fetch_k</span><span class="p">,</span> <span class="n">marginal_relevance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        <span class="n">embedding_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
+
+        <span class="n">mmr_selects</span> <span class="o">=</span> <span class="n">maximal_marginal_relevance</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+            <span class="n">embedding_list</span><span class="p">,</span>
+            <span class="n">lambda_mult</span><span class="o">=</span><span class="n">lambda_mult</span><span class="p">,</span>
+            <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">results_as_docs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_docs_from_result</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_docs_and_scores_from_result</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Return list of Documents from results_as_docs whose position</span>
+        <span class="c1"># corresponds to the indices in mmr_selects.</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">value</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results_as_docs</span><span class="p">)</span> <span class="k">if</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">mmr_selects</span>
+        <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore.similarity_search">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.similarity_search">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">similarity_search</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Return docs most similar to given query.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            query: Text to look up the most similar embedding to.</span>
+<span class="sd">            k: Number of Documents to return. Defaults to 4.</span>
+<span class="sd">            **kwargs: Values for filtering on metadata during similarity search.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of Documents most similar to the query provided.</span>
+<span class="sd">        """</span>
+        <span class="n">embedded_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_function</span><span class="o">.</span><span class="n">embed_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">similarity_search_by_vector</span><span class="p">(</span><span class="n">embedded_query</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore.similarity_search_by_vector">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.similarity_search_by_vector">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">similarity_search_by_vector</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">embedding</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Return docs most similar to the embedding vector.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            embedding: Embedding to look up documents similar to.</span>
+<span class="sd">            k: Number of Documents to return. Defaults to 4.</span>
+<span class="sd">            **kwargs: Values for filtering on metadata during similarity search.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of Documents most similar to the embedding provided.</span>
+<span class="sd">        """</span>
+        <span class="n">similar_docs_with_scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">similarity_search_by_vector_with_score</span><span class="p">(</span>
+            <span class="n">embedding</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_docs_from_result</span><span class="p">(</span><span class="n">similar_docs_with_scores</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore.similarity_search_with_score">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.similarity_search_with_score">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">similarity_search_with_score</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Document</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">"""Similarity search with score.</span>
+
+<span class="sd">        Run similarity search with distance and</span>
+<span class="sd">            return docs most similar to the embedding vector.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            query: Text to look up the most similar embedding to.</span>
+<span class="sd">            k: Number of Documents to return. Defaults to 4.</span>
+<span class="sd">            **kwargs: Values for filtering on metadata during similarity search.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of tuple of Document and an accompanying score in order of</span>
+<span class="sd">            similarity to the query provided.</span>
+<span class="sd">            Note that, a smaller score implies greater similarity.</span>
+<span class="sd">        """</span>
+        <span class="n">embedded_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_function</span><span class="o">.</span><span class="n">embed_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">similarity_search_by_vector_with_score</span><span class="p">(</span><span class="n">embedded_query</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore.similarity_search_by_vector_with_score">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.similarity_search_by_vector_with_score">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">similarity_search_by_vector_with_score</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">embedding</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Document</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">"""Similarity search by vector with score.</span>
+
+<span class="sd">        Run similarity search with distance, given an embedding</span>
+<span class="sd">            and return docs most similar to the embedding vector.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            embedding: Embedding to look up documents similar to.</span>
+<span class="sd">            k: Number of Documents to return. Defaults to 4.</span>
+<span class="sd">            **kwargs: Values for filtering on metadata during similarity search.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of tuple of Document and an accompanying score in order of</span>
+<span class="sd">            similarity to the embedding provided.</span>
+<span class="sd">            Note that, a smaller score implies greater similarity.</span>
+<span class="sd">        """</span>
+        <span class="n">similar_docs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_store</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">docs_and_scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_docs_and_scores_from_result</span><span class="p">(</span><span class="n">similar_docs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">docs_and_scores</span></div>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore.add_texts">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.add_texts">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_texts</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">texts</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">metadatas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""`add_texts` function for SQLServer_VectorStore class.</span>
+
+<span class="sd">        Compute the embeddings for the input texts and store embeddings</span>
+<span class="sd">            in the vectorstore.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            texts: Iterable of strings to add into the vectorstore.</span>
+<span class="sd">            metadatas: List of metadatas (python dicts) associated with the input texts.</span>
+<span class="sd">            ids: List of IDs for the input texts.</span>
+<span class="sd">            **kwargs: vectorstore specific parameters.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of IDs generated from adding the texts into the vectorstore.</span>
+<span class="sd">        """</span>
+        <span class="c1"># Embed the texts passed in.</span>
+        <span class="n">embedded_texts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_function</span><span class="o">.</span><span class="n">embed_documents</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">texts</span><span class="p">))</span>
+
+        <span class="c1"># Insert the embedded texts in the vector store table.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_insert_embeddings</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">embedded_texts</span><span class="p">,</span> <span class="n">metadatas</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SQLServer_VectorStore.drop">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.drop">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Drops every table created during initialization of vector store."""</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Dropping vector store: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">Session</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bind</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+                <span class="c1"># Drop the table associated with the session bind.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get_bind</span><span class="p">())</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Vector store `</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="si">}</span><span class="s2">` dropped successfully."</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">ProgrammingError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unable to drop vector store.</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_search_store</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">embedding</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+        <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="nb">filter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">marginal_relevance</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bind</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+                <span class="n">filter_by</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">filter_clauses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_filter_clause</span><span class="p">(</span><span class="nb">filter</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">filter_clauses</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">filter_by</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filter_clauses</span><span class="p">)</span>
+
+                <span class="n">subquery</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span>
+                    <span class="n">DISTANCE</span><span class="p">,</span>
+                    <span class="n">text</span><span class="p">(</span><span class="n">VECTOR_DISTANCE_QUERY</span><span class="p">)</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+                        <span class="n">bindparam</span><span class="p">(</span>
+                            <span class="n">DISTANCE_STRATEGY</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">distance_strategy</span><span class="p">,</span>
+                            <span class="n">literal_execute</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="p">),</span>
+                        <span class="n">bindparam</span><span class="p">(</span>
+                            <span class="n">EMBEDDING</span><span class="p">,</span>
+                            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">embedding</span><span class="p">),</span>
+                            <span class="n">literal_execute</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="p">),</span>
+                        <span class="n">bindparam</span><span class="p">(</span>
+                            <span class="n">EMBEDDING_LENGTH</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_length</span><span class="p">,</span>
+                            <span class="n">literal_execute</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="p">),</span>
+                    <span class="p">),</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Results for marginal relevance includes additional</span>
+                <span class="c1"># column for embeddings.</span>
+                <span class="k">if</span> <span class="n">marginal_relevance</span><span class="p">:</span>
+                    <span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">select</span><span class="p">(</span>
+                            <span class="n">text</span><span class="p">(</span><span class="s2">"cast (embeddings as NVARCHAR(MAX))"</span><span class="p">),</span>
+                            <span class="n">subquery</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">*</span><span class="n">filter_by</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">asc</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">DISTANCE</span><span class="p">)))</span>
+                        <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">results</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="p">,</span>
+                            <span class="n">subquery</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">*</span><span class="n">filter_by</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">asc</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">DISTANCE</span><span class="p">)))</span>
+                        <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">all</span><span class="p">()</span>
+                    <span class="p">)</span>
+        <span class="k">except</span> <span class="n">ProgrammingError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"An error has occurred during the search.</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_filter_clause</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create a filter clause.</span>
+
+<span class="sd">        Convert LangChain Information Retrieval filter representation to matching</span>
+<span class="sd">        SQLAlchemy clauses.</span>
+
+<span class="sd">        At the top level, we still don't know if we're working with a field</span>
+<span class="sd">        or an operator for the keys. After we've determined that we can</span>
+<span class="sd">        call the appropriate logic to handle filter creation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            filters: Dictionary of filters to apply to the query.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            SQLAlchemy clause to apply to the query.</span>
+
+<span class="sd">        Ex: For a filter,  {"$or": [{"id": 1}, {"name": "bob"}]}, the result is</span>
+<span class="sd">            JSON_VALUE(langchain_vector_store_tests.content_metadata, :JSON_VALUE_1) =</span>
+<span class="sd">              :JSON_VALUE_2 OR JSON_VALUE(langchain_vector_store_tests.content_metadata,</span>
+<span class="sd">                :JSON_VALUE_3) = :JSON_VALUE_4</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">filters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">"Expected a dict, but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span><span class="si">}</span><span class="s2"> for value: </span><span class="si">{</span><span class="nb">filter</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># The only operators allowed at the top level are $AND and $OR</span>
+                <span class="c1"># First check if an operator or a field</span>
+                <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"$"</span><span class="p">):</span>
+                    <span class="c1"># Then it's an operator</span>
+                    <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">LOGICAL_OPERATORS</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="n">INVALID_FILTER_INPUT_EXPECTED_AND_OR</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                        <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Then it's a field</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_field_filter</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">filters</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+                <span class="c1"># Here we handle the $and and $or operators</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">"Expected a list, but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2"> for value: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="p">)</span>
+                <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"$and"</span><span class="p">:</span>
+                    <span class="n">and_</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_filter_clause</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">and_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">and_</span><span class="p">(</span><span class="o">*</span><span class="n">and_</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">and_</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">and_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">INVALID_FILTER_INPUT_EXPECTED_DICT</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"$or"</span><span class="p">:</span>
+                    <span class="n">or_</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_filter_clause</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">or_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">or_</span><span class="p">(</span><span class="o">*</span><span class="n">or_</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">or_</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">or_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">INVALID_FILTER_INPUT_EXPECTED_DICT</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># Then all keys have to be fields (they cannot be operators)</span>
+                <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">filters</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"$"</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">"Invalid filter condition. Expected a field but got: </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">"</span>
+                        <span class="p">)</span>
+                <span class="c1"># These should all be fields and combined using an $and operator</span>
+                <span class="n">and_</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle_field_filter</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">filters</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">and_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">and_</span><span class="p">(</span><span class="o">*</span><span class="n">and_</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">and_</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">and_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">INVALID_FILTER_INPUT_EXPECTED_DICT</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Got an empty dictionary for filters."</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"No filters are passed, returning"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_handle_field_filter</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SQLColumnExpression</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create a filter for a specific field.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            field: name of field</span>
+<span class="sd">            value: value to filter</span>
+<span class="sd">                If provided as is then this will be an equality filter</span>
+<span class="sd">                If provided as a dictionary then this will be a filter, the key</span>
+<span class="sd">                will be the operator and the value will be the value to filter by</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            sqlalchemy expression</span>
+
+<span class="sd">        Ex: For a filter,  {"id": 1}, the result is</span>
+
+<span class="sd">            JSON_VALUE(langchain_vector_store_tests.content_metadata, :JSON_VALUE_1) =</span>
+<span class="sd">              :JSON_VALUE_2</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"$"</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Invalid filter condition. Expected a field but got an operator: "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Allow [a-zA-Z0-9_], disallow $ for now until we support escape characters</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">field</span><span class="o">.</span><span class="n">isidentifier</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Invalid field name: </span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">. Expected a valid identifier."</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="c1"># This is a filter specification that only 1 filter will be for a given</span>
+            <span class="c1"># field, if multiple filters they are mentioned separately and used with</span>
+            <span class="c1"># an AND on the top if nothing is specified</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">"Invalid filter condition. Expected a value which "</span>
+                    <span class="s2">"is a dictionary with a single key that corresponds to an operator "</span>
+                    <span class="sa">f</span><span class="s2">"but got a dictionary with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2"> keys. The first few "</span>
+                    <span class="sa">f</span><span class="s2">"keys are: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">)</span>
+            <span class="n">operator</span><span class="p">,</span> <span class="n">filter_value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># Verify that operator is an operator</span>
+            <span class="k">if</span> <span class="n">operator</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SUPPORTED_OPERATORS</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">"Invalid operator: </span><span class="si">{</span><span class="n">operator</span><span class="si">}</span><span class="s2">. "</span>
+                    <span class="sa">f</span><span class="s2">"Expected one of </span><span class="si">{</span><span class="n">SUPPORTED_OPERATORS</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Then we assume an equality operator</span>
+            <span class="n">operator</span> <span class="o">=</span> <span class="s2">"$eq"</span>
+            <span class="n">filter_value</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="k">if</span> <span class="n">operator</span> <span class="ow">in</span> <span class="n">COMPARISONS_TO_NATIVE</span><span class="p">:</span>
+            <span class="n">operation</span> <span class="o">=</span> <span class="n">COMPARISONS_TO_NATIVE</span><span class="p">[</span><span class="n">operator</span><span class="p">]</span>
+            <span class="n">native_result</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">JSON_VALUE</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">content_metadata</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"$.</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span>
+            <span class="n">native_operation_result</span> <span class="o">=</span> <span class="n">operation</span><span class="p">(</span><span class="n">native_result</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">filter_value</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">native_operation_result</span>
+
+        <span class="k">elif</span> <span class="n">operator</span> <span class="ow">in</span> <span class="n">NUMERIC_OPERATORS</span><span class="p">:</span>
+            <span class="n">operation</span> <span class="o">=</span> <span class="n">NUMERIC_OPERATORS</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">operator</span><span class="p">)]</span>
+            <span class="n">numeric_result</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">JSON_VALUE</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">content_metadata</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"$.</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span>
+            <span class="n">numeric_operation_result</span> <span class="o">=</span> <span class="n">operation</span><span class="p">(</span><span class="n">numeric_result</span><span class="p">,</span> <span class="n">filter_value</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filter_value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">numeric_operation_result</span> <span class="o">=</span> <span class="n">operation</span><span class="p">(</span>
+                    <span class="n">cast</span><span class="p">(</span><span class="n">numeric_result</span><span class="p">,</span> <span class="n">Numeric</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">filter_value</span>
+                <span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">numeric_operation_result</span>
+
+        <span class="k">elif</span> <span class="n">operator</span> <span class="ow">in</span> <span class="n">BETWEEN_OPERATOR</span><span class="p">:</span>
+            <span class="c1"># Use AND with two comparisons</span>
+            <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">filter_value</span>
+
+            <span class="c1"># Assuming lower_bound_value is a ColumnElement</span>
+            <span class="n">column_value</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">JSON_VALUE</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">content_metadata</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"$.</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span>
+
+            <span class="n">greater_operation</span> <span class="o">=</span> <span class="n">NUMERIC_OPERATORS</span><span class="p">[</span><span class="s2">"$gte"</span><span class="p">]</span>
+            <span class="n">lesser_operation</span> <span class="o">=</span> <span class="n">NUMERIC_OPERATORS</span><span class="p">[</span><span class="s2">"$lte"</span><span class="p">]</span>
+
+            <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">greater_operation</span><span class="p">(</span><span class="n">column_value</span><span class="p">,</span> <span class="n">low</span><span class="p">)</span>
+            <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">lesser_operation</span><span class="p">(</span><span class="n">column_value</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+
+            <span class="c1"># Conditionally cast if filter_value is not a string</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filter_value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">greater_operation</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="n">column_value</span><span class="p">,</span> <span class="n">Numeric</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">low</span><span class="p">)</span>
+                <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">lesser_operation</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="n">column_value</span><span class="p">,</span> <span class="n">Numeric</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">high</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">and_</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">operator</span> <span class="ow">in</span> <span class="n">SPECIAL_CASED_OPERATORS</span><span class="p">:</span>
+            <span class="c1"># We'll do force coercion to text</span>
+            <span class="k">if</span> <span class="n">operator</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"$in"</span><span class="p">,</span> <span class="s2">"$nin"</span><span class="p">}:</span>
+                <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">filter_value</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+                        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">"Unsupported type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s2"> for value: </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">"</span>
+                        <span class="p">)</span>
+
+            <span class="n">queried_field</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">JSON_VALUE</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">content_metadata</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"$.</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">operator</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"$in"</span><span class="p">}:</span>
+                <span class="k">return</span> <span class="n">queried_field</span><span class="o">.</span><span class="n">in_</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">filter_value</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">operator</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"$nin"</span><span class="p">}:</span>
+                <span class="k">return</span> <span class="n">queried_field</span><span class="o">.</span><span class="n">nin_</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">filter_value</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">operator</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"$like"</span><span class="p">}:</span>
+                <span class="k">return</span> <span class="n">queried_field</span><span class="o">.</span><span class="n">like</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filter_value</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Operator is not implemented: </span><span class="si">{</span><span class="n">operator</span><span class="si">}</span><span class="s2">. "</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_docs_from_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Formats the input into a result of type List[Document]."""</span>
+        <span class="n">docs</span> <span class="o">=</span> <span class="p">[</span><span class="n">doc</span> <span class="k">for</span> <span class="n">doc</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">doc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">docs</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_docs_and_scores_from_result</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Document</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">"""Formats the input into a result of type Tuple[Document, float].</span>
+
+<span class="sd">        If an invalid input is given, it does not attempt to format the value</span>
+<span class="sd">        and instead logs an error.</span>
+<span class="sd">        """</span>
+        <span class="n">docs_and_scores</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">EmbeddingStore</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">distance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">):</span>
+                <span class="n">docs_and_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="n">Document</span><span class="p">(</span>
+                            <span class="n">page_content</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">EmbeddingStore</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                            <span class="n">metadata</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">EmbeddingStore</span><span class="o">.</span><span class="n">content_metadata</span><span class="p">,</span>
+                        <span class="p">),</span>
+                        <span class="n">result</span><span class="o">.</span><span class="n">distance</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">INVALID_INPUT_ERROR_MESSAGE</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">docs_and_scores</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_insert_embeddings</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">texts</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">embeddings</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
+        <span class="n">metadatas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Insert the embeddings and the texts in the vectorstore.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            texts: Iterable of strings to add into the vectorstore.</span>
+<span class="sd">            embeddings: List of list of embeddings.</span>
+<span class="sd">            metadatas: List of metadatas (python dicts) associated with the input texts.</span>
+<span class="sd">            ids: List of IDs for the input texts.</span>
+<span class="sd">            **kwargs: vectorstore specific parameters.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of IDs generated from adding the texts into the vectorstore.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">metadatas</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">metadatas</span> <span class="o">=</span> <span class="p">[{}</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Get IDs from metadata if available.</span>
+                <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span> <span class="k">for</span> <span class="n">metadata</span> <span class="ow">in</span> <span class="n">metadatas</span><span class="p">]</span>
+
+            <span class="k">with</span> <span class="n">Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bind</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+                <span class="n">documents</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">query</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">texts</span><span class="p">):</span>
+                    <span class="c1"># For a query, if there is no corresponding ID,</span>
+                    <span class="c1"># we generate a uuid and add it to the list of IDs to be returned.</span>
+                    <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">):</span>
+                        <span class="n">custom_id</span> <span class="o">=</span> <span class="n">ids</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span>
+                        <span class="n">custom_id</span> <span class="o">=</span> <span class="n">ids</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">embedding</span> <span class="o">=</span> <span class="n">embeddings</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+                    <span class="n">metadata</span> <span class="o">=</span> <span class="n">metadatas</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">metadatas</span><span class="p">)</span> <span class="k">else</span> <span class="p">{}</span>
+
+                    <span class="c1"># Construct text, embedding, metadata as EmbeddingStore model</span>
+                    <span class="c1"># to be inserted into the table.</span>
+                    <span class="n">sqlquery</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span>
+                        <span class="n">text</span><span class="p">(</span><span class="n">JSON_TO_VECTOR_QUERY</span><span class="p">)</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+                            <span class="n">bindparam</span><span class="p">(</span>
+                                <span class="n">EMBEDDING_VALUES</span><span class="p">,</span>
+                                <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">embedding</span><span class="p">),</span>
+                                <span class="n">literal_execute</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="c1"># when unique is set to true, the name of the key</span>
+                                <span class="c1"># for each bindparameter is made unique, to avoid</span>
+                                <span class="c1"># using the wrong bound parameter during compile.</span>
+                                <span class="c1"># This is especially needed since we're creating</span>
+                                <span class="c1"># and storing multiple queries to be bulk inserted</span>
+                                <span class="c1"># later on.</span>
+                                <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="p">),</span>
+                            <span class="n">bindparam</span><span class="p">(</span>
+                                <span class="n">EMBEDDING_LENGTH</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_length</span><span class="p">,</span>
+                                <span class="n">literal_execute</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="p">),</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="c1"># `embedding_store` is created in a dictionary format instead</span>
+                    <span class="c1"># of using the embedding_store object from this class.</span>
+                    <span class="c1"># This enables the use of `insert().values()` which can only</span>
+                    <span class="c1"># take a dict and not a custom object.</span>
+                    <span class="n">embedding_store</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s2">"custom_id"</span><span class="p">:</span> <span class="n">custom_id</span><span class="p">,</span>
+                        <span class="s2">"content_metadata"</span><span class="p">:</span> <span class="n">metadata</span><span class="p">,</span>
+                        <span class="s2">"content"</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
+                        <span class="s2">"embeddings"</span><span class="p">:</span> <span class="n">sqlquery</span><span class="p">,</span>
+                    <span class="p">}</span>
+                    <span class="n">documents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">embedding_store</span><span class="p">)</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">insert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="n">documents</span><span class="p">))</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">DBAPIError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Add text failed:</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Metadata must be a list of dictionaries."</span><span class="p">)</span>
+            <span class="k">raise</span>
+        <span class="k">return</span> <span class="n">ids</span>
+
+<div class="viewcode-block" id="SQLServer_VectorStore.delete">
+<a class="viewcode-back" href="../../sqlserver/vectorstores/langchain_sqlserver.vectorstores.SQLServer_VectorStore.html#langchain_sqlserver.vectorstores.SQLServer_VectorStore.delete">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Delete embeddings in the vectorstore by the ids.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ids: List of IDs to delete. If None, delete all. Default is None.</span>
+<span class="sd">                No data is deleted if empty list is provided.</span>
+<span class="sd">            kwargs: vectorstore specific parameters.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Optional[bool]</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">ids</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">EMPTY_IDS_ERROR_MESSAGE</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delete_texts_by_ids</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">INVALID_IDS_ERROR_MESSAGE</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2"> rows affected."</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_delete_texts_by_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">Session</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bind</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Deleting all data in the vectorstore."</span><span class="p">)</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding_store</span><span class="o">.</span><span class="n">custom_id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span>
+                        <span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+                    <span class="p">)</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">DBAPIError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_provide_token</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dialect</span><span class="p">:</span> <span class="n">Dialect</span><span class="p">,</span>
+        <span class="n">conn_rec</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ConnectionPoolEntry</span><span class="p">],</span>
+        <span class="n">cargs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">cparams</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Function to retreive access token for connection.</span>
+
+<span class="sd">        Get token for SQLServer connection from token URL,</span>
+<span class="sd">        and use the token to connect to the database.</span>
+<span class="sd">        """</span>
+        <span class="n">credential</span> <span class="o">=</span> <span class="n">DefaultAzureCredential</span><span class="p">()</span>
+
+        <span class="c1"># Remove Trusted_Connection param that SQLAlchemy adds to</span>
+        <span class="c1"># the connection string by default.</span>
+        <span class="n">cargs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">cargs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">EXTRA_PARAMS</span><span class="p">,</span> <span class="nb">str</span><span class="p">())</span>
+
+        <span class="c1"># Create credential token</span>
+        <span class="n">token_bytes</span> <span class="o">=</span> <span class="n">credential</span><span class="o">.</span><span class="n">get_token</span><span class="p">(</span><span class="n">AZURE_TOKEN_URL</span><span class="p">)</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-16-le"</span><span class="p">)</span>
+        <span class="n">token_struct</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"&lt;I</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">token_bytes</span><span class="p">)</span><span class="si">}</span><span class="s2">s"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">token_bytes</span><span class="p">),</span> <span class="n">token_bytes</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Apply credential token to keyword argument</span>
+        <span class="n">cparams</span><span class="p">[</span><span class="s2">"attrs_before"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">SQL_COPT_SS_ACCESS_TOKEN</span><span class="p">:</span> <span class="n">token_struct</span><span class="p">}</span></div>
+
+</pre></div>
+</article>
+</div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2023, LangChain Inc.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

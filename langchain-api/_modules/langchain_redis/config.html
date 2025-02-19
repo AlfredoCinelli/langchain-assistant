@@ -1,0 +1,809 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-9B66JQQH2F"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9B66JQQH2F');
+    </script>
+<title>langchain_redis.config — 🦜🔗 LangChain  documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/autodoc_pydantic.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=488f4e83" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=3b5cce75"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '_modules/langchain_redis/config';</script>
+<link href="../../_static/favicon.png" rel="icon"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+<meta content="Feb 07, 2025" name="docbuild:last-update"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-light" src="../../_static/wordmark-api.svg"/>
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-dark pst-js-only" src="../../_static/wordmark-api-dark.svg"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar hide-on-wide" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Module code</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">langchain_redis.config</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<h1>Source code for langchain_redis.config</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">SkipValidation</span><span class="p">,</span> <span class="n">model_validator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Redis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">redisvl.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexSchema</span><span class="p">,</span> <span class="n">StorageType</span>  <span class="c1"># type: ignore[import]</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Self</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ulid</span><span class="w"> </span><span class="kn">import</span> <span class="n">ULID</span>
+
+
+<div class="viewcode-block" id="generate_ulid">
+<a class="viewcode-back" href="../../redis/config/langchain_redis.config.generate_ulid.html#langchain_redis.config.generate_ulid">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_ulid</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ULID</span><span class="p">())</span></div>
+
+
+
+<div class="viewcode-block" id="RedisConfig">
+<a class="viewcode-back" href="../../redis/config/langchain_redis.config.RedisConfig.html#langchain_redis.config.RedisConfig">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RedisConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Configuration class for Redis vector store settings.</span>
+
+<span class="sd">    This class defines the configuration parameters for setting up and interacting with</span>
+<span class="sd">    a Redis vector store. It uses Pydantic for data validation and settings management.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        index_name (str): Name of the index in Redis. Defaults to a generated ULID.</span>
+<span class="sd">        from_existing (bool): Whether to use an existing index. Defaults to False.</span>
+<span class="sd">        key_prefix (Optional[str]): Prefix for Redis keys. Defaults to index_name</span>
+<span class="sd">                                    if not set.</span>
+<span class="sd">        redis_url (str): URL of the Redis instance. Defaults to "redis://localhost:6379".</span>
+<span class="sd">        redis_client (Optional[Redis]): Pre-existing Redis client instance.</span>
+<span class="sd">        connection_args (Optional[Dict[str, Any]]): Additional Redis</span>
+<span class="sd">                                                    connection arguments.</span>
+<span class="sd">        distance_metric (str): Distance metric for vector similarity.</span>
+<span class="sd">                               Defaults to "COSINE".</span>
+<span class="sd">        indexing_algorithm (str): Algorithm used for indexing. Defaults to "FLAT".</span>
+<span class="sd">        vector_datatype (str): Data type of the vector. Defaults to "FLOAT32".</span>
+<span class="sd">        storage_type (str): Storage type in Redis. Defaults to "hash".</span>
+<span class="sd">        id_field (str): Field name for document ID. Defaults to "id".</span>
+<span class="sd">        content_field (str): Field name for document content. Defaults to "text".</span>
+<span class="sd">        embedding_field (str): Field name for embedding vector. Defaults to "embedding".</span>
+<span class="sd">        default_tag_separator (str): Separator for tag fields. Defaults to "|".</span>
+<span class="sd">        metadata_schema (Optional[List[Dict[str, Any]]]): Schema for metadata fields.</span>
+<span class="sd">        index_schema (Optional[IndexSchema]): Full index schema definition.</span>
+<span class="sd">        schema_path (Optional[str]): Path to a YAML file containing the index schema.</span>
+<span class="sd">        return_keys (bool): Whether to return keys after adding documents.</span>
+<span class="sd">                            Defaults to False.</span>
+<span class="sd">        custom_keys (Optional[List[str]]): Custom keys for documents.</span>
+<span class="sd">        embedding_dimensions (Optional[int]): Dimensionality of embedding vectors.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from langchain_redis import RedisConfig</span>
+
+<span class="sd">            config = RedisConfig(</span>
+<span class="sd">                index_name="my_index",</span>
+<span class="sd">                redis_url="redis://localhost:6379",</span>
+<span class="sd">                distance_metric="COSINE",</span>
+<span class="sd">                embedding_dimensions=1536</span>
+<span class="sd">            )</span>
+
+<span class="sd">            # Use this config to initialize a RedisVectorStore</span>
+<span class="sd">            vector_store = RedisVectorStore(embeddings=my_embeddings, config=config)</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        - Only one of 'index_schema', 'schema_path', or 'metadata_schema'</span>
+<span class="sd">          should be specified.</span>
+<span class="sd">        - The 'key_prefix' is automatically set to 'index_name' if not provided.</span>
+<span class="sd">        - When 'from_existing' is True, it connects to an existing index instead</span>
+<span class="sd">          of creating a new one.</span>
+<span class="sd">        - Custom validation ensures that incompatible options are not</span>
+<span class="sd">          simultaneously specified.</span>
+<span class="sd">    """</span>
+
+    <span class="n">index_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">generate_ulid</span><span class="p">())</span>
+    <span class="n">from_existing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">key_prefix</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">redis_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"redis://localhost:6379"</span>
+    <span class="n">redis_client</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Redis</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">connection_args</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">{})</span>
+    <span class="n">distance_metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"COSINE"</span>
+    <span class="n">indexing_algorithm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"FLAT"</span>
+    <span class="n">vector_datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"FLOAT32"</span>
+    <span class="n">storage_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"hash"</span>
+    <span class="n">id_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"id"</span>
+    <span class="n">content_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"text"</span>
+    <span class="n">embedding_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"embedding"</span>
+    <span class="n">default_tag_separator</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"|"</span>
+    <span class="n">metadata_schema</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">index_schema</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">IndexSchema</span><span class="p">],</span> <span class="n">SkipValidation</span><span class="p">()]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">"schema"</span>
+    <span class="p">)</span>
+    <span class="n">schema_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">return_keys</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">custom_keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">embedding_dimensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span>
+        <span class="n">arbitrary_types_allowed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">populate_by_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"before"</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_schema_options</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"index_schema"</span><span class="p">),</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"schema_path"</span><span class="p">),</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"metadata_schema"</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">option</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">options</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">"Only one of 'index_schema', 'schema_path', "</span>
+                <span class="s2">"or 'metadata_schema' can be specified."</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"schema"</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+            <span class="n">schema</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"schema"</span><span class="p">)</span>
+            <span class="n">values</span><span class="p">[</span><span class="s2">"index_name"</span><span class="p">]</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">values</span><span class="p">[</span><span class="s2">"key_prefix"</span><span class="p">]</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">prefix</span>
+            <span class="n">values</span><span class="p">[</span><span class="s2">"storage_type"</span><span class="p">]</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">storage_type</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">values</span><span class="p">[</span><span class="s2">"index_schema"</span><span class="p">]</span> <span class="o">=</span> <span class="n">schema</span>
+
+        <span class="k">return</span> <span class="n">values</span>
+
+    <span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"after"</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_key_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">key_prefix</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">key_prefix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="RedisConfig.from_kwargs">
+<a class="viewcode-back" href="../../redis/config/langchain_redis.config.RedisConfig.html#langchain_redis.config.RedisConfig.from_kwargs">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_kwargs</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">"RedisConfig"</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"RedisConfig"</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create a RedisConfig object with default values,</span>
+<span class="sd">           overwritten by provided kwargs.</span>
+
+<span class="sd">        This class method allows for flexible creation of a RedisConfig object,</span>
+<span class="sd">        using default values where not specified and overriding with any provided</span>
+<span class="sd">        keyword arguments.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **kwargs: Keyword arguments that match RedisConfig attributes. These will</span>
+<span class="sd">                      override default values.</span>
+<span class="sd">                Common kwargs include:</span>
+<span class="sd">                - index_name (str): Name of the index in Redis.</span>
+<span class="sd">                - redis_url (str): URL of the Redis instance.</span>
+<span class="sd">                - distance_metric (str): Distance metric for vector similarity.</span>
+<span class="sd">                - indexing_algorithm (str): Algorithm used for indexing.</span>
+<span class="sd">                - vector_datatype (str): Data type of the vector.</span>
+<span class="sd">                - embedding_dimensions (int): Dimensionality of embedding vectors.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            RedisConfig: A new instance of RedisConfig with applied settings.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from langchain_redis import RedisConfig</span>
+
+<span class="sd">                config = RedisConfig.from_kwargs(</span>
+<span class="sd">                    index_name="my_custom_index",</span>
+<span class="sd">                    redis_url="redis://custom-host:6379",</span>
+<span class="sd">                    distance_metric="COSINE",</span>
+<span class="sd">                    embedding_dimensions=768</span>
+<span class="sd">                )</span>
+
+<span class="sd">                print(config.index_name)  # Output: my_custom_index</span>
+<span class="sd">                print(config.distance_metric)  # Output: COSINE</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - This method first sets all attributes to their default values and</span>
+<span class="sd">              then overwrites them with provided kwargs.</span>
+<span class="sd">            - If a 'schema' argument is provided, it will be set as 'index_schema'</span>
+<span class="sd">              in the config.</span>
+<span class="sd">            - This method is particularly useful when you want to create a config</span>
+<span class="sd">              with mostly default values but need to customize a few specific</span>
+<span class="sd">              attributes.</span>
+<span class="sd">            - Any attribute of RedisConfig can be set through kwargs, providing full</span>
+<span class="sd">              flexibility in configuration.</span>
+<span class="sd">        """</span>
+        <span class="c1"># Get the default values from the class attributes</span>
+        <span class="n">default_config</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">model_fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">default_config</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">default</span>
+            <span class="k">elif</span> <span class="n">field</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">default_config</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">default_factory</span><span class="p">()</span>
+
+        <span class="c1"># Handle special case for 'schema' argument</span>
+        <span class="k">if</span> <span class="s2">"schema"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">"index_schema"</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"schema"</span><span class="p">)</span>
+
+        <span class="c1"># Update default_config with any provided kwargs</span>
+        <span class="n">default_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Create and return the RedisConfig object</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">default_config</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RedisConfig.from_schema">
+<a class="viewcode-back" href="../../redis/config/langchain_redis.config.RedisConfig.html#langchain_redis.config.RedisConfig.from_schema">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_schema</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">schema</span><span class="p">:</span> <span class="n">IndexSchema</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"RedisConfig"</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create a RedisConfig object from an IndexSchema.</span>
+
+<span class="sd">        This class method creates a RedisConfig instance using the provided IndexSchema,</span>
+<span class="sd">        which defines the structure of the Redis index.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            schema (IndexSchema): An IndexSchema object defining the structure of</span>
+<span class="sd">                                  the Redis index.</span>
+<span class="sd">            **kwargs: Additional keyword arguments to override or supplement the</span>
+<span class="sd">                      schema-derived settings.</span>
+<span class="sd">                Common kwargs include:</span>
+<span class="sd">                - redis_url (str): URL of the Redis instance.</span>
+<span class="sd">                - distance_metric (str): Distance metric for vector similarity.</span>
+<span class="sd">                - embedding_dimensions (int): Dimensionality of embedding vectors.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            RedisConfig: A new instance of RedisConfig configured based on the provided</span>
+<span class="sd">                         schema and kwargs.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from redisvl.schema import IndexSchema</span>
+<span class="sd">                from langchain_redis import RedisConfig</span>
+
+<span class="sd">                schema = IndexSchema.from_dict({</span>
+<span class="sd">                    "index": {"name": "my_index", "storage_type": "hash"},</span>
+<span class="sd">                    "fields": [</span>
+<span class="sd">                        {"name": "text", "type": "text"},</span>
+<span class="sd">                        {</span>
+<span class="sd">                            "name": "embedding",</span>
+<span class="sd">                            "type": "vector",</span>
+<span class="sd">                            "attrs": {"dims": 1536, "distance_metric": "cosine"}</span>
+<span class="sd">                        }</span>
+<span class="sd">                    ]</span>
+<span class="sd">                })</span>
+
+<span class="sd">                config = RedisConfig.from_schema(</span>
+<span class="sd">                    schema,</span>
+<span class="sd">                    redis_url="redis://localhost:6379"</span>
+<span class="sd">                )</span>
+
+<span class="sd">                print(config.index_name)  # Output: my_index</span>
+<span class="sd">                print(config.storage_type)  # Output: hash</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - The method extracts index name, key prefix, and storage type from the</span>
+<span class="sd">              schema.</span>
+<span class="sd">            - If the schema specifies a vector field, its attributes (like dimensions</span>
+<span class="sd">              and distance metric) are used.</span>
+<span class="sd">            - Additional kwargs can override settings derived from the schema.</span>
+<span class="sd">            - This method is useful when you have a pre-defined index structure and want</span>
+<span class="sd">              to create a matching config.</span>
+<span class="sd">            - The resulting config can be used to ensure that a RedisVectorStore matches</span>
+<span class="sd">              an existing index structure.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">schema</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">storage_type</span> <span class="o">==</span> <span class="n">StorageType</span><span class="o">.</span><span class="n">HASH</span><span class="p">:</span>
+            <span class="n">storage_type</span> <span class="o">=</span> <span class="s2">"hash"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">storage_type</span> <span class="o">=</span> <span class="s2">"json"</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span>
+            <span class="n">index_name</span><span class="o">=</span><span class="n">schema</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">key_prefix</span><span class="o">=</span><span class="n">schema</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span>
+            <span class="n">storage_type</span><span class="o">=</span><span class="n">storage_type</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RedisConfig.from_yaml">
+<a class="viewcode-back" href="../../redis/config/langchain_redis.config.RedisConfig.html#langchain_redis.config.RedisConfig.from_yaml">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_yaml</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">schema_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"RedisConfig"</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create a RedisConfig object from a YAML file containing the index schema.</span>
+
+<span class="sd">        This class method creates a RedisConfig instance using a YAML file that defines</span>
+<span class="sd">        the structure of the Redis index.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            schema_path (str): Path to the YAML file containing the index schema</span>
+<span class="sd">                               definition.</span>
+<span class="sd">            **kwargs: Additional keyword arguments to override or supplement the</span>
+<span class="sd">                      schema-derived settings.</span>
+<span class="sd">                Common kwargs include:</span>
+<span class="sd">                - redis_url (str): URL of the Redis instance.</span>
+<span class="sd">                - distance_metric (str): Distance metric for vector similarity.</span>
+<span class="sd">                - embedding_dimensions (int): Dimensionality of embedding vectors.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            RedisConfig: A new instance of RedisConfig configured based on the YAML</span>
+<span class="sd">                         schema and kwargs.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from langchain_redis import RedisConfig</span>
+
+<span class="sd">                # Assuming 'index_schema.yaml' contains a valid index schema</span>
+<span class="sd">                config = RedisConfig.from_yaml(</span>
+<span class="sd">                    schema_path="path/to/index_schema.yaml",</span>
+<span class="sd">                    redis_url="redis://localhost:6379"</span>
+<span class="sd">                )</span>
+
+<span class="sd">                print(config.index_name)  # Output: Name defined in YAML</span>
+<span class="sd">                print(config.storage_type)  # Output: Storage type defined in YAML</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - The YAML file should contain a valid index schema definition</span>
+<span class="sd">              compatible with RedisVL.</span>
+<span class="sd">            - This method internally uses IndexSchema.from_yaml() to parse</span>
+<span class="sd">              the YAML file.</span>
+<span class="sd">            - Settings derived from the YAML schema can be overridden by</span>
+<span class="sd">              additional kwargs.</span>
+<span class="sd">            - This method is particularly useful when index structures are defined</span>
+<span class="sd">              externally in YAML files.</span>
+<span class="sd">            - Ensure that the YAML file is correctly formatted and accessible at</span>
+<span class="sd">              the given path.</span>
+<span class="sd">            - Any errors in reading or parsing the YAML file will be propagated</span>
+<span class="sd">              as exceptions.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            FileNotFoundError: If the specified YAML file does not exist.</span>
+<span class="sd">            YAMLError: If there are issues parsing the YAML file.</span>
+<span class="sd">            ValueError: If the YAML content is not a valid index schema.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">schema_path</span><span class="o">=</span><span class="n">schema_path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RedisConfig.with_metadata_schema">
+<a class="viewcode-back" href="../../redis/config/langchain_redis.config.RedisConfig.html#langchain_redis.config.RedisConfig.with_metadata_schema">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">with_metadata_schema</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">metadata_schema</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"RedisConfig"</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create a RedisConfig object with a specified metadata schema.</span>
+
+<span class="sd">        This class method creates a RedisConfig instance using a provided</span>
+<span class="sd">        metadata schema, which defines the structure of additional metadata</span>
+<span class="sd">        fields in the Redis index.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metadata_schema (List[Dict[str, Any]]): A list of dictionaries defining</span>
+<span class="sd">                the metadata fields. Each dictionary should contain at least 'name'</span>
+<span class="sd">                and 'type' keys.</span>
+<span class="sd">            **kwargs: Additional keyword arguments to configure the RedisConfig</span>
+<span class="sd">                      instance.</span>
+<span class="sd">                Common kwargs include:</span>
+<span class="sd">                - index_name (str): Name of the index in Redis.</span>
+<span class="sd">                - redis_url (str): URL of the Redis instance.</span>
+<span class="sd">                - distance_metric (str): Distance metric for vector similarity.</span>
+<span class="sd">                - embedding_dimensions (int): Dimensionality of embedding vectors.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            RedisConfig: A new instance of RedisConfig configured with the specified</span>
+<span class="sd">                         metadata schema.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from langchain_redis import RedisConfig</span>
+
+<span class="sd">                metadata_schema = [</span>
+<span class="sd">                    {"name": "author", "type": "text"},</span>
+<span class="sd">                    {"name": "publication_date", "type": "numeric"},</span>
+<span class="sd">                    {"name": "tags", "type": "tag", "separator": ","}</span>
+<span class="sd">                ]</span>
+
+<span class="sd">                config = RedisConfig.with_metadata_schema(</span>
+<span class="sd">                    metadata_schema,</span>
+<span class="sd">                    index_name="book_index",</span>
+<span class="sd">                    redis_url="redis://localhost:6379",</span>
+<span class="sd">                    embedding_dimensions=1536</span>
+<span class="sd">                )</span>
+
+<span class="sd">                print(config.metadata_schema)  # Output: The metadata schema list</span>
+<span class="sd">                print(config.index_name)  # Output: book_index</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - The metadata_schema defines additional fields beyond the default content</span>
+<span class="sd">              and embedding fields.</span>
+<span class="sd">            - Common metadata field types include 'text', 'numeric', and 'tag'.</span>
+<span class="sd">            - For 'tag' fields, you can specify a custom separator using the</span>
+<span class="sd">              'separator' key.</span>
+<span class="sd">            - This method is useful when you need to index and search on specific</span>
+<span class="sd">              metadata attributes.</span>
+<span class="sd">            - The resulting config ensures that the RedisVectorStore will create</span>
+<span class="sd">              an index with the specified metadata fields.</span>
+<span class="sd">            - Make sure the metadata schema aligns with the actual metadata you</span>
+<span class="sd">              plan to store with your documents.</span>
+<span class="sd">            - This method sets only the metadata_schema; other configurations</span>
+<span class="sd">              should be provided via kwargs.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the metadata_schema is not a list of dictionaries or</span>
+<span class="sd">                        if required keys are missing.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">metadata_schema</span><span class="o">=</span><span class="n">metadata_schema</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RedisConfig.from_existing_index">
+<a class="viewcode-back" href="../../redis/config/langchain_redis.config.RedisConfig.html#langchain_redis.config.RedisConfig.from_existing_index">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_existing_index</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">index_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">redis</span><span class="p">:</span> <span class="n">Redis</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"RedisConfig"</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create a RedisConfig object from an existing Redis index.</span>
+
+<span class="sd">        This class method creates a RedisConfig instance based on the configuration</span>
+<span class="sd">        of an existing index in Redis. It's useful for connecting to and working with</span>
+<span class="sd">        pre-existing Redis vector store indexes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            index_name (str): The name of the existing index in Redis.</span>
+<span class="sd">            redis (Redis): An active Redis client instance connected to the Redis server</span>
+<span class="sd">                        where the index exists.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            RedisConfig: A new instance of RedisConfig configured to match the existing</span>
+<span class="sd">                         index.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from redis import Redis</span>
+<span class="sd">                from langchain_redis import RedisConfig</span>
+
+<span class="sd">                # Assuming an existing Redis connection</span>
+<span class="sd">                redis_client = Redis.from_url("redis://localhost:6379")</span>
+
+<span class="sd">                config = RedisConfig.from_existing_index(</span>
+<span class="sd">                    index_name="my_existing_index",</span>
+<span class="sd">                    redis_client=redis_client</span>
+<span class="sd">                )</span>
+
+<span class="sd">                print(config.index_name)  # Output: my_existing_index</span>
+<span class="sd">                print(config.from_existing)  # Output: True</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - This method sets the 'from_existing' attribute to True, indicating that</span>
+<span class="sd">              the configuration is based on an existing index.</span>
+<span class="sd">            - The method doesn't fetch the full schema or configuration of the</span>
+<span class="sd">              existing index. It only sets up the basic parameters needed to connect</span>
+<span class="sd">              to the index.</span>
+<span class="sd">            - Additional index details (like field configurations) are not retrieved and</span>
+<span class="sd">              should be known or discovered separately if needed.</span>
+<span class="sd">            - This method is particularly useful when you need to work with or extend an</span>
+<span class="sd">              existing Redis vector store index.</span>
+<span class="sd">            - Ensure that the provided Redis client has the necessary permissions to</span>
+<span class="sd">              access the specified index.</span>
+<span class="sd">            - If the index doesn't exist, this method will still create a config, but</span>
+<span class="sd">              operations using this config may fail until the index is created.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the index_name is empty or None.</span>
+<span class="sd">            ConnectionError: If there's an issue connecting to Redis using the</span>
+<span class="sd">                             provided client.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">index_name</span><span class="o">=</span><span class="n">index_name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RedisConfig.to_index_schema">
+<a class="viewcode-back" href="../../redis/config/langchain_redis.config.RedisConfig.html#langchain_redis.config.RedisConfig.to_index_schema">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_index_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IndexSchema</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Convert the RedisConfig to an IndexSchema.</span>
+
+<span class="sd">        This method creates an IndexSchema object based on the current configuration.</span>
+<span class="sd">        It's useful for generating a schema that can be used to create or update</span>
+<span class="sd">        a Redis index.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            IndexSchema: An IndexSchema object representing the current configuration.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                from langchain_redis import RedisConfig</span>
+
+<span class="sd">                config = RedisConfig(</span>
+<span class="sd">                    index_name="my_index",</span>
+<span class="sd">                    embedding_dimensions=1536,</span>
+<span class="sd">                    distance_metric="COSINE",</span>
+<span class="sd">                    metadata_schema=[</span>
+<span class="sd">                        {"name": "author", "type": "text"},</span>
+<span class="sd">                        {"name": "year", "type": "numeric"}</span>
+<span class="sd">                    ]</span>
+<span class="sd">                )</span>
+
+<span class="sd">                schema = config.to_index_schema()</span>
+<span class="sd">                print(schema.index.name)</span>
+<span class="sd">                # Output: my_index</span>
+<span class="sd">                print(len(schema.fields))</span>
+<span class="sd">                # Output: 4 (id, content, embedding, author, year)</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            - If an index_schema is already set, it will be returned directly.</span>
+<span class="sd">            - If a schema_path is set, the schema will be loaded from the YAML file.</span>
+<span class="sd">            - Otherwise, a new IndexSchema is created based on the current</span>
+<span class="sd">              configuration.</span>
+<span class="sd">            - The resulting schema includes fields for id, content, and embedding</span>
+<span class="sd">              vector, as well as any additional fields specified in metadata_schema.</span>
+<span class="sd">            - The embedding field is configured with the specified dimensions,</span>
+<span class="sd">              distance metric, and other relevant attributes.</span>
+<span class="sd">            - This method is particularly useful when you need to create a new index or</span>
+<span class="sd">              validate the structure of an existing one.</span>
+<span class="sd">            - The generated schema can be used with RedisVL operations that require</span>
+<span class="sd">              an IndexSchema.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If essential configuration elements (like embedding_dimensions)</span>
+<span class="sd">                        are missing.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_schema</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_schema</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema_path</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">IndexSchema</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">index_info</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_name</span><span class="p">,</span>
+                <span class="s2">"prefix"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">key_prefix</span><span class="p">,</span>
+                <span class="s2">"storage_type"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_type</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id_field</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"tag"</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_field</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"text"</span><span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">"name"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_field</span><span class="p">,</span>
+                    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"vector"</span><span class="p">,</span>
+                    <span class="s2">"attrs"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"dims"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dimensions</span><span class="p">,</span>
+                        <span class="s2">"distance_metric"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_metric</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
+                        <span class="s2">"algorithm"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexing_algorithm</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
+                        <span class="s2">"datatype"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector_datatype</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
+                    <span class="p">},</span>
+                <span class="p">},</span>
+            <span class="p">]</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata_schema</span><span class="p">:</span>
+                <span class="n">fields</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata_schema</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">IndexSchema</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s2">"index"</span><span class="p">:</span> <span class="n">index_info</span><span class="p">,</span> <span class="s2">"fields"</span><span class="p">:</span> <span class="n">fields</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="RedisConfig.redis">
+<a class="viewcode-back" href="../../redis/config/langchain_redis.config.RedisConfig.html#langchain_redis.config.RedisConfig.redis">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Redis</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis_client</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis_url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection_args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Redis</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">redis_url</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_args</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Redis</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">redis_url</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Either redis_client or redis_url must be provided"</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+</article>
+</div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2023, LangChain Inc.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
