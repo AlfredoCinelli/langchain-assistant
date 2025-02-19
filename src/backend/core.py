@@ -229,38 +229,3 @@ class RAGChain:
         return rag_chain.stream(
             input={"question": query, "context": self.format_docs(documents)}
         )
-        
-class RAGChain2:
-    def __init__(
-        self: Self,
-    ):
-        self.vectorstore = VectorStorePinecone().vectorstore
-        self.llm = LLMModel(model="mistral").llm
-        self.rag_prompt_template = hub.pull("langchain-ai/retrieval-qa-chat")
-        self.rephrase_prompt_template = hub.pull("langchain-ai/chat-langchain-rephrase")
-        
-    
-    def rag_chain(
-        self: Self,
-        query: str,
-        chat_history: list[dict[str, str]],
-    ):
-        formatted_chat_history = [
-            (chat.get("role"), chat.get("content"))
-            for chat in chat_history
-        ]
-        augmentation_generation_chain = create_stuff_documents_chain(
-            self.llm,
-            self.rag_prompt_template,
-        )
-        history_aware_retriever = create_history_aware_retriever(
-            llm=self.llm,
-            retriever=self.vectorstore.as_retriever(**{"search_type": "similarity", "search_kwargs": {"k": 5}}),
-            prompt=self.rephrase_prompt_template
-        )
-        retrieval_chain = create_retrieval_chain(
-            retriever=history_aware_retriever,
-            combine_docs_chain=augmentation_generation_chain,            
-        )
-        result = retrieval_chain.stream(input={"input": query, "chat_history": formatted_chat_history})
-        return result

@@ -7,11 +7,10 @@ Package containing the main modules to perform RAG.
     - RAGChain: to manage the RAG chain and strem a full chain.
 """
 
-from .core import LLMModel, RAGChain, VectorStorePinecone, RAGChain2
+from .core import LLMModel, RAGChain, VectorStorePinecone
 
 __all__ = [
     "LLMModel",
     "RAGChain",
     "VectorStorePinecone",
-    "RAGChain2",
 ]
